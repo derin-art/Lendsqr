@@ -3,6 +3,14 @@ html {
   padding: 0%;
 }
 
+/* Default Styling for Button for Cursor to change to pointer on hover */
+button {
+  &:hover {
+    cursor: pointer;
+  }
+  all: unset;
+}
+
 .Icons {
   display: flex;
   justify-content: center;
@@ -24,29 +32,7 @@ html {
   }
 }
 
-.LoginDetailComp {
-  width: 50vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  h1 {
-    font-size: 60px;
-  }
-
-  input {
-    max-width: 447px;
-    height: 50px;
-    margin-bottom: 24px;
-    border-radius: 5px;
-    padding: 16px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 2px rgba(84, 95, 125, 0.15) solid;
-  }
-}
-
-/* Common Styling  */
+/* Common Styling For easier and flexible styling*/
 
 .w-full {
   width: 100%;
@@ -75,4 +61,13 @@ html {
 
 .r {
   position: relative;
+}
+
+.c {
+  border: 2px red solid;
+}
+
+/*remove default styling from elements*/
+.revert {
+  all: unset;
 }

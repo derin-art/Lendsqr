@@ -1,5 +1,5 @@
 import LendsqrIcon from "../../Icons/LendsqrIcon";
-import EnterLoginDetailsComponent from "../LoginComponents/EnterLoginDetailsComponent";
+import EnterLoginDetailsComponent from "./EnterLoginDetailsComponent";
 
 export default function Login() {
   return (
