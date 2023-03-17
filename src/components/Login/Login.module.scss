@@ -45,6 +45,18 @@
   .headingCont {
     max-width: 447px;
     width: 100%;
+    margin-bottom: 60px;
+    h1 {
+      margin-bottom: 10px;
+      all: unset;
+      font-size: 40px;
+      font-weight: 700;
+    }
+    h2 {
+      all: unset;
+      display: block;
+      font-size: 20px;
+    }
   }
 
   .ForgotBtn {
@@ -67,6 +79,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 5px;
     }
   }
 }
