@@ -1,0 +1,30 @@
+html {
+  margin: 0%;
+  padding: 0%;
+}
+
+.Icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px red solid;
+  width: fit-content;
+}
+
+.Login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  img {
+    width: 50vw;
+    max-width: 600px;
+  }
+}
+
+.LoginDetailComp {
+  width: 50vw;
+  height: 100vh;
+}
