@@ -34,6 +34,7 @@
     margin-bottom: 24px;
     border-radius: 5px;
     padding: 16px;
+    font-family: Avenir400;
     width: 100%;
     box-sizing: border-box;
     border: 2px rgba(84, 95, 125, 0.15) solid;
@@ -42,41 +43,51 @@
   .inputCont {
     max-width: 447px;
     width: 100%;
+
+    display: flex;
+    align-items: center;
     position: relative;
   }
 
   .ShowInput {
     right: 2%;
-    top: 20%;
+    top: 30%;
+
     position: absolute;
-    border: none;
+
     background-color: transparent;
     color: #39cdcc;
     z-index: 50;
-  }
-  .ShowInput:hover {
+    font-size: 12px;
+    font-family: Avenir600;
   }
 
   .headingCont {
     max-width: 447px;
     width: 100%;
     margin-bottom: 60px;
-    h1 {
-      margin-bottom: 10px;
+    .h1 {
       all: unset;
       font-size: 40px;
       font-weight: 700;
+      color: variables.$header-text;
+      font-family: Avenir700;
     }
-    h2 {
+    .h2 {
       all: unset;
       display: block;
+      margin-top: 10px;
       font-size: 20px;
+      color: variables.$header-text;
+      font-family: Avenir400;
     }
   }
 
   .ForgotBtn {
     max-width: 447px;
+    font-size: 12px;
     width: 100%;
+    font-family: Avenir600;
     button {
       color: variables.$btn-color;
     }
@@ -91,6 +102,8 @@
       height: 48px;
       background: variables.$btn-color;
       color: white;
+      font-family: Avenir600;
+      font-size: 14px;
       display: flex;
       justify-content: center;
       align-items: center;
