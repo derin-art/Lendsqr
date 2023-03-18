@@ -4,7 +4,7 @@ import EnterLoginDetailsComponent from "./EnterLoginDetailsComponent";
 
 export default function Login() {
   return (
-    <div className="Login">
+    <div className={Style.Login}>
       <img className={Style.Illustration} src={"/Icons/SignInSvg.svg"}></img>
       <EnterLoginDetailsComponent></EnterLoginDetailsComponent>
     </div>

@@ -8,10 +8,10 @@ export default function Dashboard() {
     <div className={`${Style.DashboardCont}`}>
       <Header></Header>
 
-      <div className={`${Style.H}`}>
+      <div className={`${Style.MainCont}`}>
         <SideBar></SideBar>
-        <div className={`${Style.K} c`}>
-          <div className={`${Style.T}`}></div>
+        <div className={`${Style.CompCont} c`}>
+          <div className={`${Style.Comp}`}>dd</div>
         </div>
       </div>
     </div>

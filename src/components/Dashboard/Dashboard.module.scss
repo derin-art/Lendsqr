@@ -1,19 +1,31 @@
+@use "../variables";
+
 .DashboardCont {
   position: relative;
   width: 100%;
+  overflow: hidden;
 
-  .H {
+  .MainCont {
     display: flex;
     width: 100%;
+    margin-top: 100px;
   }
-  .T {
+  .Comp {
     max-width: 1037px;
     height: 640px;
-    width: 80%;
+    width: 100%;
+    padding: variables.$mobile-padding;
     background-color: yellow;
+    @media screen and (min-width: variables.$tab) {
+      width: 80%;
+    }
   }
-  .K {
-    width: 80%;
+  .CompCont {
+    width: 100%;
+
+    @media screen and (min-width: variables.$tab) {
+      width: 80%;
+    }
   }
 }
 
@@ -23,13 +35,28 @@
   background-color: red;
   max-width: 238px;
   width: 20vw;
+  position: absolute;
+  left: -50%;
+  @media screen and (min-width: variables.$tab) {
+    display: block;
+    position: initial;
+  }
 }
 
 .Header {
   width: 100%;
   height: 100px;
-  background-color: blue;
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px;
   @media screen and (min-width: 600px) {
     background-color: red;
+  }
+  input {
+    width: 60vw;
   }
 }
