@@ -1,10 +1,11 @@
 import LendsqrIcon from "../../Icons/LendsqrIcon";
+import Style from "./Login.module.scss";
 import EnterLoginDetailsComponent from "./EnterLoginDetailsComponent";
 
 export default function Login() {
   return (
     <div className="Login">
-      <img src={"/Icons/SignInSvg.svg"}></img>
+      <img className={Style.Illustration} src={"/Icons/SignInSvg.svg"}></img>
       <EnterLoginDetailsComponent></EnterLoginDetailsComponent>
     </div>
   );

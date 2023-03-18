@@ -1,12 +1,17 @@
 @use "../variables";
 
 .LoginDetailComp {
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+
+  @media screen and (min-width: variables.$tab) {
+    width: 50vw;
+  }
 
   h1 {
     font-size: 60px;
@@ -81,5 +86,14 @@
       align-items: center;
       border-radius: 5px;
     }
+  }
+}
+
+.Illustration {
+  width: 50%;
+  max-width: 600px;
+  display: none;
+  @media screen and (min-width: variables.$tab) {
+    display: block;
   }
 }
