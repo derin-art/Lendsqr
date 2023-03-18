@@ -58,3 +58,20 @@ button {
 .revert {
   all: unset;
 }
+
+/* Fonts */
+
+@font-face {
+  font-family: Avenir400;
+  src: url("../public/Fonts/Avenir/Metropolis-Thin.otf");
+}
+
+@font-face {
+  font-family: Avenir600;
+  src: url("../public/Fonts/Avenir/Metropolis-SemiBold.otf");
+}
+
+@font-face {
+  font-family: Avenir700;
+  src: url("../public/Fonts/Avenir/Metropolis-Bold.otf");
+}
