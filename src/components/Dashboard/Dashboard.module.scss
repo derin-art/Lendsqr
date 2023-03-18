@@ -1,0 +1,35 @@
+.DashboardCont {
+  position: relative;
+  width: 100%;
+
+  .H {
+    display: flex;
+    width: 100%;
+  }
+  .T {
+    max-width: 1037px;
+    height: 640px;
+    width: 80%;
+    background-color: yellow;
+  }
+  .K {
+    width: 80%;
+  }
+}
+
+.SideBar {
+  max-width: 238px;
+  height: 100vh;
+  background-color: red;
+  max-width: 238px;
+  width: 20vw;
+}
+
+.Header {
+  width: 100%;
+  height: 100px;
+  background-color: blue;
+  @media screen and (min-width: 600px) {
+    background-color: red;
+  }
+}
