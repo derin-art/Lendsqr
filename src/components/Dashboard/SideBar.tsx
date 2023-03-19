@@ -1,7 +1,8 @@
 import Style from "./Dashboard.module.scss";
+import SideBarOptionsComp from "./SideBarOptionsComp";
 
 export default function SideBar() {
-  /* For easier importing of svg assets */
+  /* For easier importing of SideBar svg assets */
 
   const sideBarSvgRootLocation = "/Icons/SideBar/";
 
@@ -93,14 +94,42 @@ export default function SideBar() {
 
   return (
     <div className={`${Style.SideBar}`}>
-      {settingsMenuSection.map((item, index) => {
-        return (
-          <div key={index}>
-            {item.name}
-            <img src={item.iconPath}></img>
-          </div>
-        );
-      })}
+      <div className={`${Style.MenuCont}`}>
+        <span>CUSTOMERS</span>
+        {customersMenuSection.map((item, index) => {
+          return (
+            <SideBarOptionsComp
+              icon={item.iconPath}
+              name={item.name}
+              key={index}
+            ></SideBarOptionsComp>
+          );
+        })}
+      </div>
+      <div className={`${Style.MenuCont}`}>
+        <span>BUSINESSES</span>
+        {businessMenuSection.map((item, index) => {
+          return (
+            <SideBarOptionsComp
+              icon={item.iconPath}
+              name={item.name}
+              key={index}
+            ></SideBarOptionsComp>
+          );
+        })}
+      </div>
+      <div className={`${Style.MenuCont}`}>
+        <span>SETTINGS</span>
+        {settingsMenuSection.map((item, index) => {
+          return (
+            <SideBarOptionsComp
+              icon={item.iconPath}
+              name={item.name}
+              key={index}
+            ></SideBarOptionsComp>
+          );
+        })}
+      </div>
     </div>
   );
 }

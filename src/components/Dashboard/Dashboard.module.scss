@@ -3,7 +3,7 @@
 .DashboardCont {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 
   .MainCont {
     display: flex;
@@ -34,7 +34,7 @@
 
 .SideBar {
   max-width: 238px;
-  height: 100vh;
+  height: fit-content;
   background-color: red;
   max-width: 238px;
   width: 20vw;
@@ -48,14 +48,17 @@
     width: 100%;
     height: 40px;
     display: flex;
-    justify-content: center;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    box-sizing: border-box;
     align-items: center;
+    margin-bottom: 4px;
     border: 2px rgb(6, 2, 2) solid;
-    .MainCont {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      border: 2px beige solid;
+    span {
+      margin-left: 10px;
+    }
+    .MenuCont {
     }
   }
 }
