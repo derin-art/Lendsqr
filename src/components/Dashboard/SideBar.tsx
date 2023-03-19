@@ -94,6 +94,14 @@ export default function SideBar() {
 
   return (
     <div className={`${Style.SideBar}`}>
+      <div className={` ${Style.SwitchOrg} `}>
+        <img src={`${sideBarSvgRootLocation}/SwitchOrg.svg`}></img>
+        <span>Switch Organization</span>
+      </div>
+      <div className={Style.Dashboard}>
+        <img src={`${sideBarSvgRootLocation}/Dashboard.svg`}></img>
+        <span>Dashboard</span>
+      </div>
       <div className={`${Style.MenuCont}`}>
         <span>CUSTOMERS</span>
         {customersMenuSection.map((item, index) => {

@@ -1,5 +1,21 @@
 @use "../variables";
 
+@mixin SideComp($margin-bottom) {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  padding-left: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  margin-bottom: $margin-bottom;
+  border: 2px rgb(6, 2, 2) solid;
+  span {
+    margin-left: 10px;
+  }
+}
+
 .DashboardCont {
   position: relative;
   width: 100%;
@@ -40,26 +56,20 @@
   width: 20vw;
   position: absolute;
   left: -50%;
+
   @media screen and (min-width: variables.$tab) {
     display: block;
     position: initial;
   }
   .SideBarOptionsComp {
-    width: 100%;
-    height: 40px;
-    display: flex;
-    padding-left: 30px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    box-sizing: border-box;
-    align-items: center;
-    margin-bottom: 4px;
-    border: 2px rgb(6, 2, 2) solid;
-    span {
-      margin-left: 10px;
-    }
-    .MenuCont {
-    }
+    @include SideComp(10px);
+  }
+  .SwitchOrg {
+    @include SideComp(52px);
+    margin-top: 39px;
+  }
+  .Dashboard {
+    @include SideComp(41px);
   }
 }
 
