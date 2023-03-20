@@ -102,14 +102,23 @@
   max-width: 238px;
   height: fit-content;
 
-  max-width: 238px;
-  width: 20vw;
   position: absolute;
-  left: -50%;
+  left: 0%;
+  width: 238px;
+
+  transition-duration: 500ms;
+  &.Opened {
+    left: 0%;
+  }
+  &.Closed {
+    left: -100%;
+  }
 
   @media screen and (min-width: variables.$tab) {
     display: block;
     position: initial;
+    max-width: 238px;
+    width: 20vw;
   }
 
   .MenuCont {
@@ -247,5 +256,28 @@
       margin-right: 10px;
       border-radius: 50%;
     }
+  }
+}
+
+.Test {
+  width: 100%;
+  height: fit-content;
+  border: 2px red solid;
+  overflow-x: scroll;
+  margin-top: 10px;
+  display: flex;
+  position: relative;
+  :nth-child(1) {
+    border-right: 2px red solid;
+    position: fixed;
+  }
+  :nth-child(2) {
+    border-right: 2px red solid;
+  }
+  :nth-child(3) {
+    border-right: 2px rgb(0, 0, 0) solid;
+    width: 60%;
+    min-width: 600px;
+    background: blue;
   }
 }

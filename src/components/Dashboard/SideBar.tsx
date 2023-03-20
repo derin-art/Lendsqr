@@ -1,7 +1,12 @@
 import Style from "./Dashboard.module.scss";
 import SideBarOptionsItem from "./SideBarOptionsItem";
 
-export default function SideBar() {
+type SideBarProps = {
+  /* Boolean that controls if the sidebar is open or closed */
+  isSideBarOpen: boolean;
+};
+
+export default function SideBar(props: SideBarProps) {
   /* For easier importing of SideBar svg assets */
 
   const sideBarSvgRootLocation = "/Icons/Dashboard/SideBar/";
@@ -93,7 +98,11 @@ export default function SideBar() {
   ];
 
   return (
-    <div className={`${Style.SideBar}`}>
+    <div
+      className={`${Style.SideBar} ${
+        props.isSideBarOpen ? Style.Opened : Style.Closed
+      } `}
+    >
       <div className={` ${Style.SwitchOrg} `}>
         <img src={`${sideBarSvgRootLocation}/SwitchOrg.svg`}></img>
         <span>Switch Organization</span>

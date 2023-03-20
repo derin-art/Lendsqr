@@ -1,15 +1,28 @@
+import { useState } from "react";
 import Style from "./Dashboard.module.scss";
 
-export default function Header() {
+type HeaderProps = {
+  sideBarHandler: () => void;
+};
+
+export default function Header(props: HeaderProps) {
   const bellIconLocation = "/Icons/Dashboard/Header/Bell.svg";
   const logoIconLocation = "/Icons/Logo.svg";
   const profilePicLocation = "/Images/Dashboard/Header/ProfilePic.png";
+
   return (
     <div>
       <div className={`${Style.Header}`}>
         <img className={`${Style.Logo}`} src={logoIconLocation}></img>
         <div className={Style.InfoHeader}>
-          <span className={Style.MenuHamburger}>Menu</span>{" "}
+          <span
+            className={Style.MenuHamburger}
+            onClick={() => {
+              props.sideBarHandler();
+            }}
+          >
+            Menu
+          </span>{" "}
           <span className={Style.ProfilePicCont}>
             {" "}
             <span>Docs</span>
