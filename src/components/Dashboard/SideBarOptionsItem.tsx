@@ -5,7 +5,7 @@ type SideBarOptionsCompProps = {
   icon: string;
 };
 
-export default function SideBarOptionsComp(props: SideBarOptionsCompProps) {
+export default function SideBarOptionsItem(props: SideBarOptionsCompProps) {
   return (
     <div className={Style.SideBarOptionsComp}>
       <img src={props.icon}></img>

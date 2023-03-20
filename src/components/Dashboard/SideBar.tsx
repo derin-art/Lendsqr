@@ -1,10 +1,10 @@
 import Style from "./Dashboard.module.scss";
-import SideBarOptionsComp from "./SideBarOptionsComp";
+import SideBarOptionsItem from "./SideBarOptionsItem";
 
 export default function SideBar() {
   /* For easier importing of SideBar svg assets */
 
-  const sideBarSvgRootLocation = "/Icons/SideBar/";
+  const sideBarSvgRootLocation = "/Icons/Dashboard/SideBar/";
 
   const customersMenuSection = [
     { iconPath: `${sideBarSvgRootLocation}/Users.svg`, name: "Users" },
@@ -106,11 +106,11 @@ export default function SideBar() {
         <span>CUSTOMERS</span>
         {customersMenuSection.map((item, index) => {
           return (
-            <SideBarOptionsComp
+            <SideBarOptionsItem
               icon={item.iconPath}
               name={item.name}
               key={index}
-            ></SideBarOptionsComp>
+            ></SideBarOptionsItem>
           );
         })}
       </div>
@@ -118,11 +118,11 @@ export default function SideBar() {
         <span>BUSINESSES</span>
         {businessMenuSection.map((item, index) => {
           return (
-            <SideBarOptionsComp
+            <SideBarOptionsItem
               icon={item.iconPath}
               name={item.name}
               key={index}
-            ></SideBarOptionsComp>
+            ></SideBarOptionsItem>
           );
         })}
       </div>
@@ -130,11 +130,11 @@ export default function SideBar() {
         <span>SETTINGS</span>
         {settingsMenuSection.map((item, index) => {
           return (
-            <SideBarOptionsComp
+            <SideBarOptionsItem
               icon={item.iconPath}
               name={item.name}
               key={index}
-            ></SideBarOptionsComp>
+            ></SideBarOptionsItem>
           );
         })}
       </div>
