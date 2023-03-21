@@ -1,3 +1,5 @@
+import Style from "./Dashboard.module.scss";
+
 type DashboardTableItemProps = {
   Organization: string;
   Username: string;

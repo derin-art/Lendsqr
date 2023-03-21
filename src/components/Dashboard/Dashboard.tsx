@@ -4,6 +4,7 @@ import Style from "./Dashboard.module.scss";
 import Login from "../Login/Login";
 import { useState } from "react";
 import DashboardHeadline from "./DashboardHeadline";
+import DashboardTable from "./DashboardTable";
 
 export default function Dashboard() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -21,6 +22,7 @@ export default function Dashboard() {
         <div className={`${Style.CompCont} c`}>
           <div className={`${Style.ChildCont}`}>
             <DashboardHeadline></DashboardHeadline>
+            <DashboardTable></DashboardTable>
             <div className={Style.Test}>
               <span>h</span>
               <span>hcccc</span>
