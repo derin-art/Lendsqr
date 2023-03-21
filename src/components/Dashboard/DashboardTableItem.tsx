@@ -10,14 +10,36 @@ type DashboardTableItemProps = {
 };
 
 export default function DashboardTableItem(props: DashboardTableItemProps) {
+  const tableHeaderIcon =
+    "/Icons/Dashboard/DashboardTableItem/TableHeaderIcon.svg";
   return (
-    <div>
-      <span>{props.Organization}</span>
-      <span>{props.Username}</span>
-      <span>{props.Email}</span>
-      <span>{props.PhoneNumber}</span>
-      <span>{props.DateJoined}</span>
-      <span>{props.Status}</span>
+    <div className={Style.DashboardTableItem}>
+      <span className={Style.HorizontalHeader}>
+        <p>
+          ORGANIZATION <img src={tableHeaderIcon}></img>
+        </p>
+        {props.Organization}
+      </span>
+      <span>
+        <p>USERNAME</p>
+        {props.Username}
+      </span>
+      <span>
+        <p>EMAIL</p>
+        {props.Email}
+      </span>
+      <span>
+        <p>PHONE NUMBER</p>
+        {props.PhoneNumber}
+      </span>
+      <span>
+        <p>DATE JOINED</p>
+        {props.DateJoined}
+      </span>
+      <span>
+        <p>STATUS</p>
+        {props.Status}
+      </span>
     </div>
   );
 }

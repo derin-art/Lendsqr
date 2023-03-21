@@ -25,4 +25,14 @@ describe("Testing for Both Input Elements in the EnterLoginDetailsComponent", ()
     userEvent.type(passwordInput, "password1");
     expect(passwordInput.innerText === "password1");
   });
+
+  test("Check if forgot password and log in buttons rendered", () => {
+    render(<EnterLoginDetailsComponent></EnterLoginDetailsComponent>);
+    const forgotPasswordButton = screen.getByText(/FORGOT PASSWORD?/i);
+    const logInButton = screen.getByText(/LOG IN?/i);
+
+    expect(forgotPasswordButton).toBeInTheDocument();
+
+    expect(logInButton).toBeInTheDocument();
+  });
 });

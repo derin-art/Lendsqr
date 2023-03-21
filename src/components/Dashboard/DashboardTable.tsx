@@ -1,9 +1,18 @@
 import Style from "./Dashboard.module.scss";
 import axios from "axios";
+import DashboardTableItem from "./DashboardTableItem";
 import { useEffect, useState } from "react";
+import { DashboardTableItemType } from "./Types/DashboardTableItemType";
 
 export default function DashboardTable() {
-  const [fetchResults, setFetchResults] = useState({
+  type fetchResultType = {
+    isFetching: boolean;
+    isError: boolean;
+    status: string | null;
+    userDataArray: DashboardTableItemType[];
+  };
+
+  const [fetchResults, setFetchResults] = useState<fetchResultType>({
     isFetching: false,
     isError: false,
     status: null,
@@ -28,5 +37,22 @@ export default function DashboardTable() {
   }, []);
 
   console.log("res", fetchResults);
-  return <div></div>;
+  return (
+    <div className={Style.DashboardTable}>
+      {fetchResults.userDataArray &&
+        fetchResults.userDataArray.slice(0, 10).map((item, index) => {
+          return (
+            <DashboardTableItem
+              DateJoined={item.createdAt}
+              Email={item.email}
+              Organization={item.orgName}
+              PhoneNumber={item.phoneNumber}
+              Status={"active"}
+              Username={item.userName}
+              key={index}
+            ></DashboardTableItem>
+          );
+        })}
+    </div>
+  );
 }
