@@ -37,8 +37,31 @@ export default function DashboardTable() {
   }, []);
 
   console.log("res", fetchResults);
+
+  const tableHeaderHeadings = [
+    { name: "ORGANIZATION" },
+    { name: "USERNAME" },
+    { name: "EMAIL" },
+    { name: "PHONE NUMBER" },
+    { name: "DATE JOINED" },
+    { name: "STATUS" },
+  ];
+
+  const tableHeaderIcon =
+    "/Icons/Dashboard/DashboardTableItem/TableHeaderIcon.svg";
+
   return (
     <div className={Style.DashboardTable}>
+      <div className={Style.DashboardTableHeader}>
+        {tableHeaderHeadings.map((item, index) => {
+          return (
+            <p key={index}>
+              <span>{item.name}</span>
+              <img src={tableHeaderIcon}></img>
+            </p>
+          );
+        })}
+      </div>
       {fetchResults.userDataArray &&
         fetchResults.userDataArray.slice(0, 10).map((item, index) => {
           return (
