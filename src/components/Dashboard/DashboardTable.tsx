@@ -2,15 +2,18 @@ import Style from "./Dashboard.module.scss";
 import axios from "axios";
 import DashboardTableItem from "./DashboardTableItem";
 import { useEffect, useState } from "react";
+import { TurnsAFlatArrayIntoNestedArrays } from "./Functions/TurnsAFlatArrayIntoNestedArrays";
 import FilterComponent from "./FilterComponent/FilterComponent";
 import { DashboardTableItemType } from "./Types/DashboardTableItemType";
+import { DashboardTableItemProps } from "./DashboardTableItem";
 
 export default function DashboardTable() {
   type fetchResultType = {
     isFetching: boolean;
     isError: boolean;
     status: string | null;
-    userDataArray: DashboardTableItemType[];
+    userDataArray: DashboardTableItemType[][];
+    userDataFlatArray: DashboardTableItemType[];
   };
 
   const [fetchResults, setFetchResults] = useState<fetchResultType>({
@@ -18,16 +21,19 @@ export default function DashboardTable() {
     isError: false,
     status: null,
     userDataArray: [],
+    userDataFlatArray: [],
   });
 
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<DashboardTableItemProps>({
     Organization: "",
     Username: "",
     Email: "",
-    Date: "",
+    DateJoined: "",
     PhoneNumber: "",
-    Status: null,
+    Status: "",
   });
+
+  console.log(filters, "sfd");
 
   useEffect(() => {
     const response = async () => {
@@ -39,7 +45,17 @@ export default function DashboardTable() {
         });
       if (res) {
         setFetchResults((prev) => {
-          return { ...prev, userDataArray: res.data, status: res.status };
+          const nestedUserDataArray = TurnsAFlatArrayIntoNestedArrays(
+            10,
+            res.data
+          );
+          console.log("sdsd", nestedUserDataArray);
+          return {
+            ...prev,
+            userDataArray: nestedUserDataArray,
+            userDataFlatArray: res.data,
+            status: res.status,
+          };
         });
         return res;
       }
@@ -63,7 +79,11 @@ export default function DashboardTable() {
 
   return (
     <div className={Style.DashboardTable}>
-      <FilterComponent></FilterComponent>
+      <FilterComponent
+        userDataFlatArray={fetchResults.userDataFlatArray}
+        filters={filters}
+        setFilter={setFilters}
+      ></FilterComponent>
       <div className={Style.DashboardTableHeader}>
         {tableHeaderHeadings.map((item, index) => {
           return (
@@ -74,8 +94,8 @@ export default function DashboardTable() {
           );
         })}
       </div>
-      {fetchResults.userDataArray &&
-        fetchResults.userDataArray.slice(0, 10).map((item, index) => {
+      {fetchResults.userDataArray[0] &&
+        fetchResults.userDataArray[0].map((item, index) => {
           return (
             <DashboardTableItem
               DateJoined={item.createdAt}

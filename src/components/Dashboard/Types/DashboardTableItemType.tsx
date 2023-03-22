@@ -39,4 +39,5 @@ export type DashboardTableItemType = {
     twitter: string;
   };
   userName: string;
+  status: string;
 };
