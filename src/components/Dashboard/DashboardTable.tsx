@@ -43,17 +43,33 @@ export default function DashboardTable() {
           console.log(err);
           return err;
         });
+
       if (res) {
+        const modefiedResDatatoAddStatus = res.data.map(
+          (item: DashboardTableItemType) => {
+            const possibleStatuses = [
+              "Active",
+              "Inactive",
+              "Pending",
+              "Blacklisted",
+            ];
+            const randomIndex = Math.floor(Math.random() * 4);
+            return {
+              ...item,
+              status: possibleStatuses[randomIndex],
+            };
+          }
+        );
         setFetchResults((prev) => {
           const nestedUserDataArray = TurnsAFlatArrayIntoNestedArrays(
             10,
-            res.data
+            modefiedResDatatoAddStatus
           );
           console.log("sdsd", nestedUserDataArray);
           return {
             ...prev,
             userDataArray: nestedUserDataArray,
-            userDataFlatArray: res.data,
+            userDataFlatArray: modefiedResDatatoAddStatus,
             status: res.status,
           };
         });
