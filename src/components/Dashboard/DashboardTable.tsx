@@ -2,6 +2,7 @@ import Style from "./Dashboard.module.scss";
 import axios from "axios";
 import DashboardTableItem from "./DashboardTableItem";
 import { useEffect, useState } from "react";
+import FilterComponent from "./FilterComponent/FilterComponent";
 import { DashboardTableItemType } from "./Types/DashboardTableItemType";
 
 export default function DashboardTable() {
@@ -18,6 +19,16 @@ export default function DashboardTable() {
     status: null,
     userDataArray: [],
   });
+
+  const [filters, setFilters] = useState({
+    Organization: "",
+    Username: "",
+    Email: "",
+    Date: "",
+    PhoneNumber: "",
+    Status: null,
+  });
+
   useEffect(() => {
     const response = async () => {
       const res = await axios
@@ -52,6 +63,7 @@ export default function DashboardTable() {
 
   return (
     <div className={Style.DashboardTable}>
+      <FilterComponent></FilterComponent>
       <div className={Style.DashboardTableHeader}>
         {tableHeaderHeadings.map((item, index) => {
           return (

@@ -1,6 +1,6 @@
 import Style from "./Dashboard.module.scss";
 
-type DashboardTableItemProps = {
+export type DashboardTableItemProps = {
   Organization: string;
   Username: string;
   Email: string;
