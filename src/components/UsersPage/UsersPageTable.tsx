@@ -7,6 +7,7 @@ import FilterComponent from "./FilterComponent/FilterComponent";
 import { DashboardTableItemType } from "./Types/DashboardTableItemType";
 import { DashboardTableItemProps } from "./UsersPageTableItem";
 import FooterPaginationComponent from "./FooterPaginationComponent/FooterPaginationComponent";
+import { GridLoader } from "react-spinners";
 
 export type fetchResultType = {
   isFetching: boolean;
@@ -18,7 +19,7 @@ export type fetchResultType = {
 
 export default function DashboardTable() {
   const [fetchResults, setFetchResults] = useState<fetchResultType>({
-    isFetching: false,
+    isFetching: true,
     isError: false,
     status: null,
     userDataArray: [],
@@ -106,6 +107,12 @@ export default function DashboardTable() {
   const tableHeaderIcon =
     "/Icons/Dashboard/DashboardTableItem/TableHeaderIcon.svg";
 
+  const isErrorState = fetchResults.isError && !fetchResults.isFetching;
+
+  const isLoadingState = fetchResults.isFetching;
+
+  const isgoodResponseState = !fetchResults.isError && !fetchResults.isFetching;
+
   return (
     <div className={Style.UsersPageTable}>
       <FilterComponent
@@ -124,7 +131,7 @@ export default function DashboardTable() {
           );
         })}
       </div>
-      {fetchResults.userDataArray[0] &&
+      {isgoodResponseState &&
         fetchResults.userDataArray[currentPage].map((item, index) => {
           return (
             <DashboardTableItem
@@ -138,6 +145,8 @@ export default function DashboardTable() {
             ></DashboardTableItem>
           );
         })}
+      {isLoadingState && <GridLoader></GridLoader>}
+      {isErrorState && <p>An Error has Ocurred</p>}
       <FooterPaginationComponent
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
