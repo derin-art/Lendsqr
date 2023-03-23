@@ -5,6 +5,7 @@ import LendsqrIcon from "./Icons/LendsqrIcon";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Login from "./components/Login/Login";
 import Users from "./components/UsersPage/UsersPage";
+import UserDetailPage from "./components/UserDetailsPage/UserDetailsPage";
 import {
   BrowserRouter,
   Route,
@@ -27,6 +28,14 @@ function App() {
       element: (
         <Dashboard>
           <Users></Users>
+        </Dashboard>
+      ),
+    },
+    {
+      path: "/UserDetails/:id",
+      element: (
+        <Dashboard>
+          <UserDetailPage></UserDetailPage>
         </Dashboard>
       ),
     },
