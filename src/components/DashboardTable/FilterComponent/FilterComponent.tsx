@@ -1,7 +1,7 @@
 import Style from "./FilterComponent.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import { FilterFunction } from "./Functions/FilterFunctions";
-import { DashboardTableItemProps } from "../../DashboardTable/DashboardTableItem";
+import { DashboardTableItemProps } from "../DashboardTableItem";
 import { DashboardTableItemType } from "../Types/DashboardTableItemType";
 import { format } from "date-fns";
 import React from "react";

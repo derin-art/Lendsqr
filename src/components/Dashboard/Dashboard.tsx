@@ -3,10 +3,16 @@ import Header from "./Header";
 import Style from "./Dashboard.module.scss";
 import Login from "../Login/Login";
 import { useState } from "react";
-import DashboardHeadline from "./DashboardHeadline";
-import DashboardTable from "./DashboardTable";
+import { useLocation } from "react-router-dom";
+import DashboardHeadline from "../DashboardTable/DashboardHeadline";
+import DashboardTable from "../DashboardTable/DashboardTable";
 
-export default function Dashboard() {
+type DashboardProps = {
+  children: any;
+};
+
+export default function Dashboard(props: DashboardProps) {
+  const pathname = useLocation().pathname;
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const sideBarHandler = () => {
@@ -20,15 +26,7 @@ export default function Dashboard() {
         <SideBar isSideBarOpen={isSideBarOpen}></SideBar>
 
         <div className={`${Style.CompCont} c`}>
-          <div className={`${Style.ChildCont}`}>
-            <DashboardHeadline></DashboardHeadline>
-            <DashboardTable></DashboardTable>
-            <div className={Style.Test}>
-              <span>h</span>
-              <span>hcccc</span>
-              <span>hcccsa</span>
-            </div>
-          </div>
+          <div className={`${Style.ChildCont}`}>{props.children}</div>
         </div>
       </div>
     </div>

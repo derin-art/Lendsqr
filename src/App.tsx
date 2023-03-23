@@ -11,6 +11,8 @@ import {
   createBrowserRouter,
   RouterProvider,
   useRoutes,
+  useLocation,
+  Pathname,
 } from "react-router-dom";
 
 function App() {
