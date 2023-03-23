@@ -129,6 +129,7 @@ export default function DashboardTable() {
           );
         })}
       <FooterPaginationComponent
+        currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         userDataArray={fetchResults.userDataArray}
       ></FooterPaginationComponent>
