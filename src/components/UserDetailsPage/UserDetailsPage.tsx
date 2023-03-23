@@ -3,6 +3,7 @@ import Style from "./UserDetail.module.scss";
 import { useParams } from "react-router-dom";
 import { DashboardTableItemType } from "../UsersPage/Types/DashboardTableItemType";
 import axios from "axios";
+import { GridLoader } from "react-spinners";
 
 export default function UserDetailPage() {
   const { id } = useParams();
@@ -17,22 +18,38 @@ export default function UserDetailPage() {
 
   const [fetchResults, setFetchResults] = useState<fetchResults>({
     isError: false,
-    isFetching: false,
+    isFetching: true,
     status: null,
   });
 
   useEffect(() => {
     const response = async () => {
+      setFetchResults((prev) => {
+        return { ...prev, isFetching: true, isError: false };
+      });
       const res = await axios
         .get(`${process.env.REACT_APP_LENDSQR_USERS}/${id}`)
         .catch((err) => {
           console.log(err);
+          setFetchResults((prev) => {
+            return {
+              ...prev,
+              isFetching: false,
+              isError: true,
+              status: "500",
+            };
+          });
           return err;
         });
       if (res.data) {
         setUserDetails(res.data);
         setFetchResults((prev) => {
-          return { ...prev, status: res.status };
+          return {
+            ...prev,
+            status: res.status,
+            isError: false,
+            isFetching: false,
+          };
         });
       }
     };
@@ -118,9 +135,15 @@ export default function UserDetailPage() {
     },
   ];
 
+  const isErrorState = fetchResults.isError && !fetchResults.isFetching;
+
+  const isLoadingState = fetchResults.isFetching;
+
+  const isgoodResponseState = !fetchResults.isError && !fetchResults.isFetching;
+
   return (
     <div className={Style.UserDetailsComp}>
-      {userDetails &&
+      {isgoodResponseState &&
         userDetailPageInfo.map((section, index) => {
           return (
             <div key={index}>
@@ -142,6 +165,12 @@ export default function UserDetailPage() {
             </div>
           );
         })}
+      {isErrorState && <div>An error Occured</div>}
+      {isLoadingState && (
+        <div>
+          <GridLoader></GridLoader>
+        </div>
+      )}
     </div>
   );
 }
