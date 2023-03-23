@@ -38,6 +38,8 @@ export default function DashboardTable() {
 
   console.log(filters, "sfd");
 
+  console.log("SDSDSDSD", process.env.REACT_APP_LENDSQR_USERS);
+
   useEffect(() => {
     const response = async () => {
       const res = await axios
