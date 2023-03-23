@@ -139,7 +139,7 @@ export default function DashboardTable() {
               Email={item.email}
               Organization={item.orgName}
               PhoneNumber={item.phoneNumber}
-              Status={"active"}
+              Status={item.status}
               Username={item.userName}
               key={index}
             ></DashboardTableItem>

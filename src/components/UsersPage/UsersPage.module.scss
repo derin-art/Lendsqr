@@ -22,20 +22,46 @@
   }
 }
 
+@mixin Status($color) {
+  text-align: left;
+  padding: 6px 13px;
+  border-radius: 100px;
+  background-color: rgba($color, 0.1);
+  color: $color;
+  width: fit-content;
+}
+
 @mixin DashboardHeadlineDefault {
   .DashboardHeadlineItem {
     max-width: 240px;
     height: 160px;
     width: 100%;
-    border: 2px red solid;
+    background-color: white;
     display: flex;
     flex-direction: column;
     padding: 30px;
     box-sizing: border-box;
+    border-radius: 4px;
+    span {
+      font-family: Worksans, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: variables.$input-border-col;
+    }
+    div {
+      font-family: Worksans, sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: variables.$header-text;
+    }
     img {
       width: 40px;
     }
   }
+}
+
+.UsersPage {
+  background-color: #e5e5e5;
 }
 
 .SwipeableDashboardHeadline {
@@ -53,7 +79,6 @@
 .UserPageHeadline {
   display: none;
   justify-content: space-between;
-  border: 2px blue solid;
 
   @include DashboardHeadlineDefault();
   @media screen and (min-width: variables.$tab) {
@@ -66,13 +91,15 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  border: 2px lawngreen solid;
-
+  border-radius: 4px;
+  background-color: white;
+  padding: 30px;
+  box-sizing: border-box;
   .UsersPageTableHeader {
     display: none;
     @media screen and (min-width: variables.$laptop) {
       width: 100%;
-      border: 2px sandybrown solid;
+
       justify-content: space-between;
       display: flex;
       p {
@@ -80,6 +107,9 @@
         font-size: 12px;
         display: flex;
         align-items: center;
+        font-family: WorkSans, sans-serif;
+        font-weight: 600;
+        color: variables.$input-border-col;
         span {
           margin-right: 10px;
         }
@@ -149,6 +179,7 @@
     font-weight: 400;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     p {
       font-weight: 600;
@@ -156,10 +187,22 @@
         display: none;
       }
     }
+    .Active {
+      @include Status(#39cd62);
+    }
+    .Inactive {
+      @include Status(#545f7d);
+    }
+    .Pending {
+      @include Status(#e9b200);
+    }
+    .Blacklisted {
+      @include Status((#e4033b));
+    }
     margin-right: 35px;
     @media screen and (min-width: variables.$laptop) {
       display: flex;
-      align-items: center;
+
       width: 100px;
       height: fit-content;
       max-width: 100px;

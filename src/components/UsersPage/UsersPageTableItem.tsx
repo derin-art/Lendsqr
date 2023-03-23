@@ -12,6 +12,16 @@ export type DashboardTableItemProps = {
 export default function DashboardTableItem(props: DashboardTableItemProps) {
   const tableHeaderIcon =
     "/Icons/Dashboard/DashboardTableItem/TableHeaderIcon.svg";
+  let statusClassName;
+  if (props.Status === "Active") {
+    statusClassName = Style.Active;
+  } else if (props.Status === "Inactive") {
+    statusClassName = Style.Inactive;
+  } else if (props.Status === "Pending") {
+    statusClassName = Style.Pending;
+  } else {
+    statusClassName = Style.Blacklisted;
+  }
   return (
     <div className={Style.UsersPageTableItem}>
       <span className={Style.HorizontalHeader}>
@@ -38,7 +48,7 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
       </span>
       <span>
         <p>STATUS</p>
-        {props.Status}
+        <div className={statusClassName}> {props.Status}</div>
       </span>
     </div>
   );

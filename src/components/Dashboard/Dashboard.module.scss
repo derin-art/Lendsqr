@@ -35,7 +35,7 @@
     display: flex;
     width: 100%;
     margin-top: 140px;
-
+    background-color: #e5e5e5;
     @media screen and (min-width: variables.$lg-laptop) {
       margin-top: 100px;
     }
@@ -56,7 +56,7 @@
     margin-right: auto;
     display: flex;
     justify-content: center;
-    background-color: white;
+    background-color: #e5e5e5;
     @media screen and (min-width: variables.$tab) {
       width: 80%;
     }
