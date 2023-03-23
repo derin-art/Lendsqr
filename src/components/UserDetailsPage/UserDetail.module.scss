@@ -1,5 +1,32 @@
+@use "../variables";
+
 .UserDetailsComp {
   width: 100%;
-  height: 500px;
-  background: blue;
+  height: fit-content;
+  background: rgb(255, 255, 255);
+  padding: 30px;
+  overflow: hidden;
+
+  box-sizing: border-box;
+  .UserDetailsCompSection {
+    span {
+      font-family: WorkSans, sans-serif;
+      size: 16px;
+      font-weight: 500;
+      color: variables.$header-text;
+      margin-bottom: 30px;
+    }
+    .SubHeadings {
+      div {
+        margin-bottom: 30px;
+        font-family: WorkSans, sans-serif;
+
+        color: #545f7d;
+        p {
+          font-size: 12px;
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
 }

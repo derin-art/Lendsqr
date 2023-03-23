@@ -146,15 +146,15 @@ export default function UserDetailPage() {
       {isgoodResponseState &&
         userDetailPageInfo.map((section, index) => {
           return (
-            <div key={index}>
+            <div key={index} className={Style.UserDetailsCompSection}>
               <span>{section.name}</span>
               {section.subHeaders.map((sub, index) => {
                 return (
-                  <div key={index}>
+                  <div key={index} className={Style.SubHeadings}>
                     {sub.map((item, index) => {
                       return (
                         <div key={index}>
-                          {item.name}
+                          <p> {item.name}</p>
                           {item.value}
                         </div>
                       );
