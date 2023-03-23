@@ -1,15 +1,18 @@
 import Style from "./FilterComponent.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import { FilterFunction } from "./Functions/FilterFunctions";
-import { DashboardTableItemProps } from "../../DashboardTable/DashboardTableItem";
+import { DashboardTableItemProps } from "../UsersPageTableItem";
 import { DashboardTableItemType } from "../Types/DashboardTableItemType";
 import { format } from "date-fns";
 import React from "react";
+import { fetchResultType } from "../UsersPageTable";
+import { TurnsAFlatArrayIntoNestedArrays } from "../Functions/TurnsAFlatArrayIntoNestedArrays";
 
 type FilterComponentProps = {
   filters: DashboardTableItemProps;
   setFilter: React.Dispatch<React.SetStateAction<DashboardTableItemProps>>;
   userDataFlatArray: DashboardTableItemType[];
+  setFetchResults: React.Dispatch<React.SetStateAction<fetchResultType>>;
 };
 
 export default function FilterComponent(props: FilterComponentProps) {
@@ -25,7 +28,7 @@ export default function FilterComponent(props: FilterComponentProps) {
     },
     { name: "Username" },
     { name: "Email" },
-    { name: "Date", dateInput: true },
+    { name: "DateJoined", dateInput: true },
     { name: "PhoneNumber" },
     {
       name: "Status",
@@ -85,7 +88,7 @@ export default function FilterComponent(props: FilterComponentProps) {
       <div>
         <button
           onClick={() => {
-            FilterFunction(
+            const newFilteredArray = FilterFunction(
               props.filters.Username,
               props.filters.Organization,
               props.filters.Email,
@@ -94,6 +97,17 @@ export default function FilterComponent(props: FilterComponentProps) {
               props.filters.Status,
               props.userDataFlatArray
             );
+            const nestedFilteredArray = TurnsAFlatArrayIntoNestedArrays(
+              10,
+              newFilteredArray
+            );
+            props.setFetchResults((prev) => {
+              return {
+                ...prev,
+                userDataArray: nestedFilteredArray,
+                userDataFlatArray: newFilteredArray,
+              };
+            });
           }}
         >
           Filter

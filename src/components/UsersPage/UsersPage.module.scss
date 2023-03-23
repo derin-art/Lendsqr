@@ -50,7 +50,7 @@
   justify-content: center;
 }
 
-.DashboardHeadline {
+.UserPageHeadline {
   display: none;
   justify-content: space-between;
   border: 2px blue solid;
@@ -61,7 +61,7 @@
   }
 }
 
-.DashboardTable {
+.UsersPageTable {
   background-color: rgb(173, 176, 176);
   display: flex;
   flex-direction: column;
@@ -69,7 +69,7 @@
   width: 100%;
   border: 2px lawngreen solid;
 
-  .DashboardTableHeader {
+  .UsersPageTableHeader {
     display: none;
     @media screen and (min-width: variables.$laptop) {
       width: 100%;
@@ -93,7 +93,7 @@
     }
   }
 
-  .DashboardTableItem {
+  .UsersPageTableItem {
     display: flex;
     font-size: 12px;
 
@@ -142,7 +142,7 @@
       }
     }
   }
-  .DashboardTableItem > * {
+  .UsersPageTableItem > * {
     color: blue;
 
     width: fit-content;

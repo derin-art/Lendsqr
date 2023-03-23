@@ -1,4 +1,4 @@
-import Style from "./Dashboard.module.scss";
+import Style from "./UsersPage.module.scss";
 
 export type DashboardTableItemProps = {
   Organization: string;
@@ -13,7 +13,7 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
   const tableHeaderIcon =
     "/Icons/Dashboard/DashboardTableItem/TableHeaderIcon.svg";
   return (
-    <div className={Style.DashboardTableItem}>
+    <div className={Style.UsersPageTableItem}>
       <span className={Style.HorizontalHeader}>
         <p>
           ORGANIZATION <img src={tableHeaderIcon}></img>

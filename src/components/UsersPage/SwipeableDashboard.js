@@ -1,6 +1,6 @@
 import SwipeableViews from "react-swipeable-views";
 import DashboardHeadlineItem from "./DashboardHeadlineItem";
-import Style from "./Dashboard.module.scss";
+import Style from "./UsersPage.module.scss";
 
 export default function SwipeableDashboard() {
   const dashBoardHeadlineSvgRootLocation =

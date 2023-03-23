@@ -1,4 +1,4 @@
-import Style from "./Dashboard.module.scss";
+import Style from "./UsersPage.module.scss";
 import DashboardHeadlineItem from "./DashboardHeadlineItem";
 import SwipeableDashboard from "./SwipeableDashboard";
 
@@ -31,7 +31,7 @@ export default function DashboardHeadline() {
 
   return (
     <div>
-      <div className={Style.DashboardHeadline}>
+      <div className={Style.UserPageHeadline}>
         {dashboardHeadlineItemsList.map((item, index) => {
           return (
             <DashboardHeadlineItem

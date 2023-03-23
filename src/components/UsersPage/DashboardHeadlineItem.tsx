@@ -1,4 +1,4 @@
-import Style from "./Dashboard.module.scss";
+import Style from "./UsersPage.module.scss";
 
 type DashboardHeadlineItemProps = {
   icon: string;

@@ -1,6 +1,6 @@
 function TurnsAFlatArrayIntoNestedArrays(
   noPerNestedArray: number,
-  flatArray: []
+  flatArray: any[]
 ) {
   const finalArray = [];
   const chunkSize = noPerNestedArray;

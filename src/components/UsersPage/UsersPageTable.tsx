@@ -1,21 +1,22 @@
-import Style from "./Dashboard.module.scss";
+import Style from "./UsersPage.module.scss";
 import axios from "axios";
-import DashboardTableItem from "./DashboardTableItem";
+import DashboardTableItem from "./UsersPageTableItem";
 import { useEffect, useState } from "react";
 import { TurnsAFlatArrayIntoNestedArrays } from "./Functions/TurnsAFlatArrayIntoNestedArrays";
 import FilterComponent from "./FilterComponent/FilterComponent";
 import { DashboardTableItemType } from "./Types/DashboardTableItemType";
-import { DashboardTableItemProps } from "./DashboardTableItem";
+import { DashboardTableItemProps } from "./UsersPageTableItem";
+import FooterPaginationComponent from "./FooterPaginationComponent/FooterPaginationComponent";
+
+export type fetchResultType = {
+  isFetching: boolean;
+  isError: boolean;
+  status: string | null;
+  userDataArray: DashboardTableItemType[][];
+  userDataFlatArray: DashboardTableItemType[];
+};
 
 export default function DashboardTable() {
-  type fetchResultType = {
-    isFetching: boolean;
-    isError: boolean;
-    status: string | null;
-    userDataArray: DashboardTableItemType[][];
-    userDataFlatArray: DashboardTableItemType[];
-  };
-
   const [fetchResults, setFetchResults] = useState<fetchResultType>({
     isFetching: false,
     isError: false,
@@ -32,6 +33,8 @@ export default function DashboardTable() {
     PhoneNumber: "",
     Status: "",
   });
+
+  const [currentPage, setCurrentPage] = useState(0);
 
   console.log(filters, "sfd");
 
@@ -94,13 +97,14 @@ export default function DashboardTable() {
     "/Icons/Dashboard/DashboardTableItem/TableHeaderIcon.svg";
 
   return (
-    <div className={Style.DashboardTable}>
+    <div className={Style.UsersPageTable}>
       <FilterComponent
+        setFetchResults={setFetchResults}
         userDataFlatArray={fetchResults.userDataFlatArray}
         filters={filters}
         setFilter={setFilters}
       ></FilterComponent>
-      <div className={Style.DashboardTableHeader}>
+      <div className={Style.UsersPageTableHeader}>
         {tableHeaderHeadings.map((item, index) => {
           return (
             <p key={index}>
@@ -111,7 +115,7 @@ export default function DashboardTable() {
         })}
       </div>
       {fetchResults.userDataArray[0] &&
-        fetchResults.userDataArray[0].map((item, index) => {
+        fetchResults.userDataArray[currentPage].map((item, index) => {
           return (
             <DashboardTableItem
               DateJoined={item.createdAt}
@@ -124,6 +128,10 @@ export default function DashboardTable() {
             ></DashboardTableItem>
           );
         })}
+      <FooterPaginationComponent
+        setCurrentPage={setCurrentPage}
+        userDataArray={fetchResults.userDataArray}
+      ></FooterPaginationComponent>
     </div>
   );
 }
