@@ -42,10 +42,16 @@ export default function DashboardTable() {
 
   useEffect(() => {
     const response = async () => {
+      setFetchResults((prev) => {
+        return { ...prev, isFetching: true, isError: false };
+      });
       const res = await axios
-        .get("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
+        .get(`${process.env.REACT_APP_LENDSQR_USERS}`)
         .catch((err) => {
           console.log(err);
+          setFetchResults((prev) => {
+            return { ...prev, isFetching: false, isError: true, status: "500" };
+          });
           return err;
         });
 
@@ -76,6 +82,8 @@ export default function DashboardTable() {
             userDataArray: nestedUserDataArray,
             userDataFlatArray: modefiedResDatatoAddStatus,
             status: res.status,
+            isError: false,
+            isFetching: false,
           };
         });
         return res;
