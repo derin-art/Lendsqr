@@ -4,6 +4,7 @@ import "./App.scss";
 import LendsqrIcon from "./Icons/LendsqrIcon";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Login from "./components/Login/Login";
+import Users from "./components/UsersPage/UsersPage";
 import {
   BrowserRouter,
   Route,
@@ -23,14 +24,14 @@ function App() {
     },
     {
       path: "/Dashboard",
-      element: <Dashboard></Dashboard>,
+      element: (
+        <Dashboard>
+          <Users></Users>
+        </Dashboard>
+      ),
     },
   ]);
-  return (
-    <div className="">
-      <RouterProvider router={router}></RouterProvider>
-    </div>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
