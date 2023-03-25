@@ -1,0 +1,17 @@
+.FetchResponseCont {
+  .GridLoader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+  }
+  .ErrorRes {
+    color: red;
+    font-family: WorkSans, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    text-align: center;
+  }
+}

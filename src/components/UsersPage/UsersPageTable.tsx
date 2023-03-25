@@ -9,6 +9,7 @@ import { DashboardTableItemProps } from "./UsersPageTableItem";
 import FooterPaginationComponent from "./FooterPaginationComponent/FooterPaginationComponent";
 import { GridLoader } from "react-spinners";
 import { AnimatePresence, motion } from "framer-motion";
+import FetchResponseComponent from "../FetchResponseComponent/FetchResponseComponent";
 
 export type fetchResultType = {
   isFetching: boolean;
@@ -155,7 +156,29 @@ export default function DashboardTable() {
           );
         })}
       </div>
-      {isgoodResponseState &&
+      <FetchResponseComponent
+        isErrorState={isErrorState}
+        isGoodResponseState={isgoodResponseState}
+        isLoadingState={isLoadingState}
+        goodResponse={
+          isgoodResponseState &&
+          fetchResults.userDataArray[currentPage].map((item, index) => {
+            return (
+              <DashboardTableItem
+                DateJoined={item.createdAt}
+                Email={item.email}
+                Organization={item.orgName}
+                PhoneNumber={item.phoneNumber}
+                Status={item.status}
+                Username={item.userName}
+                key={index}
+              ></DashboardTableItem>
+            );
+          })
+        }
+      ></FetchResponseComponent>
+
+      {/*    {isgoodResponseState &&
         fetchResults.userDataArray[currentPage].map((item, index) => {
           return (
             <DashboardTableItem
@@ -170,7 +193,8 @@ export default function DashboardTable() {
           );
         })}
       {isLoadingState && <GridLoader></GridLoader>}
-      {isErrorState && <p>An Error has Ocurred</p>}
+      {isErrorState && <p>An Error has Ocurred</p>} */}
+
       <FooterPaginationComponent
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

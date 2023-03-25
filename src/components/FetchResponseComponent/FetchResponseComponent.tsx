@@ -1,4 +1,5 @@
 import { GridLoader } from "react-spinners";
+import Style from "./FetchResponse.module.scss";
 
 type FetchResponseComponent = {
   isGoodResponseState: boolean;
@@ -9,15 +10,19 @@ type FetchResponseComponent = {
 
 export default function FetchResponseComponent(props: FetchResponseComponent) {
   return (
-    <>
+    <div className={Style.FetchResponseCont}>
       {props.isGoodResponseState && props.goodResponse}
-      {props.isErrorState && <div>An error Occured</div>}
-      {props.isLoadingState && (
-        <div>
-          {" "}
-          <GridLoader></GridLoader>
+      {props.isErrorState && (
+        <div className={Style.ErrorRes}>
+          An error occured. Please check your internet connection and try again
         </div>
       )}
-    </>
+      {props.isLoadingState && (
+        <div className={Style.GridLoader}>
+          {" "}
+          <GridLoader size={30} color="#39cdcc"></GridLoader>
+        </div>
+      )}
+    </div>
   );
 }
