@@ -106,7 +106,23 @@ export default function FilterComponent(props: FilterComponentProps) {
                 </div>
               );
             })}
-            <div>
+            <div className={Style.FilterBtnCont}>
+              <button
+                onClick={() => {
+                  const initialArray = TurnsAFlatArrayIntoNestedArrays(
+                    10,
+                    props.userDataFlatArray
+                  );
+                  props.setFetchResults((prev) => {
+                    return {
+                      ...prev,
+                      userDataArray: initialArray,
+                    };
+                  });
+                }}
+              >
+                Reset
+              </button>
               <button
                 onClick={() => {
                   const newFilteredArray = FilterFunction(
@@ -126,7 +142,6 @@ export default function FilterComponent(props: FilterComponentProps) {
                     return {
                       ...prev,
                       userDataArray: nestedFilteredArray,
-                      userDataFlatArray: newFilteredArray,
                     };
                   });
                 }}

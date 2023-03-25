@@ -52,24 +52,58 @@ export default function FooterPaginationComponent(
           out of 100
         </select>
       </div>
-      <div>
+      <div className={Style.FooterButtons}>
         <button
           onClick={() => {
             handleNextPage();
           }}
+          className={`${
+            props.currentPage === pageNumbers - 1 && Style.cannotBeClicked
+          } ${Style.NextPage}`}
         >
-          next
+          <img src="\Icons\UsersPage\FooterPaginationComponent\Prev.svg"></img>
         </button>
-        {props.userDataArray.map((page, index) => {
-          return <span key={index}>{index + 1}</span>;
-        })}
-
+        <div className={Style.FooterNumbers}>
+          {" "}
+          <div className={Style.StartingIndexes}>
+            {" "}
+            {props.userDataArray
+              .slice(0, props.userDataArray.length - 2)
+              .map((page, index) => {
+                return (
+                  <span
+                    className={`${index === 0 && Style.start} ${
+                      index === props.userDataArray.length - 1 && Style.end
+                    }`}
+                    key={index}
+                  >
+                    {index + 1}
+                  </span>
+                );
+              })}
+          </div>
+          {props.userDataArray.map((page, index) => {
+            if (props.userDataArray.length - 2 <= index) {
+              return (
+                <span
+                  className={`${index === 0 && Style.start} ${
+                    index === props.userDataArray.length - 1 && Style.end
+                  }`}
+                  key={index}
+                >
+                  {index + 1}
+                </span>
+              );
+            }
+          })}
+        </div>
         <button
+          className={`${props.currentPage === 0 && Style.cannotBeClicked}`}
           onClick={() => {
             handlePrevPage();
           }}
         >
-          prev
+          <img src="\Icons\UsersPage\FooterPaginationComponent\Prev.svg"></img>
         </button>
       </div>
     </div>

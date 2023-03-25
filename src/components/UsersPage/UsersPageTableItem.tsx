@@ -50,6 +50,12 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
         <p>STATUS</p>
         <div className={statusClassName}> {props.Status}</div>
       </span>
+      <button className={Style.PopUpButton}>
+        <img
+          className={Style.PopUpButtonIcon}
+          src="/Icons/Dashboard/DashboardTableItem/PopUpMenuIcon.svg"
+        ></img>
+      </button>
     </div>
   );
 }

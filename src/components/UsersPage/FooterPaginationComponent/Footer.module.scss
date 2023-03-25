@@ -1,14 +1,58 @@
+@use "../../variables";
+
 .FooterCont {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: aqua;
+  font-family: WorkSans, sans-serif;
+  font-size: 14px;
+  color: variables.$header-text;
+  margin-top: 30px;
+
   height: fit-content;
   margin-bottom: 100px;
+  @media screen and (min-width: variables.$laptop) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
   select {
     option {
       font-size: 12px;
       padding: 0px;
+    }
+  }
+
+  .FooterButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    @media screen and (min-width: variables.$laptop) {
+      margin-top: 0px;
+    }
+
+    .NextPage {
+      rotate: 180deg;
+      margin-bottom: 4px;
+    }
+    .cannotBeClicked {
+      opacity: 0.6;
+    }
+  }
+  .FooterNumbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .StartingIndexes {
+      span {
+        margin: 0 10px;
+      }
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 70px;
+    }
+    span {
+      margin: 0 10px;
     }
   }
 }

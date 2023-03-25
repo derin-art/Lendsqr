@@ -1,7 +1,7 @@
 @use "../../variables";
 
 .MainComp {
-  height: 600px;
+  height: 620px;
   width: 270px;
   background: rgb(255, 255, 255);
   position: absolute;
@@ -18,7 +18,8 @@
   label {
     font-family: WorkSans, sans-serif;
     font-size: 14px;
-    color: variables.$header-text;
+    color: variables.$input-border-col;
+    font-weight: 500;
   }
   input,
   select {
@@ -29,5 +30,16 @@
     border-radius: 8px;
     color: variables.$input-border-col;
     border: 1px rgba(variables.$header-text, 0.2) solid;
+  }
+  .FilterBtnCont {
+    display: flex;
+    justify-content: space-between;
+    button {
+      padding: 12px 30px;
+      border: 2px red solid;
+      font-size: 14px;
+      font-family: WorkSans, sans-serif;
+      font-weight: 600;
+    }
   }
 }

@@ -43,6 +43,7 @@ export default function DashboardTable() {
     status: null,
     userDataArray: [],
     userDataFlatArray: [],
+    
   });
 
   const [filters, setFilters] = useState<DashboardTableItemProps>({
