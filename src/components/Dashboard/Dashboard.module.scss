@@ -16,11 +16,17 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  border-left: 3px variables.$btn-color solid;
+  transition-duration: 100ms;
+
   span {
     margin-left: 10px;
     font-size: $span-font-size;
     font-weight: 400;
+  }
+  &.isSelected {
+    border-left: 3px variables.$btn-color solid;
+    opacity: 1;
+    background-color: rgba(variables.$btn-color, 0.06);
   }
 }
 
@@ -114,10 +120,12 @@
   }
 }
 
+/* The Styling for the header component for Mobile screens to Tab Screens. The Tab screen variable can be found in the _variables.scss file */
+
 .Header {
   width: 100%;
   height: fit-content;
-  padding-top: 10px;
+  padding: 10px 0;
   position: fixed;
   color: variables.$header-text;
   display: flex;
@@ -126,7 +134,9 @@
   align-items: center;
   align-content: space-around;
   background-color: white;
-  z-index: 30;
+  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+
+  z-index: 100;
 
   box-shadow: 2px;
   @media screen and (min-width: variables.$lg-laptop) {
@@ -162,6 +172,13 @@
     .Logo {
       width: 115px;
     }
+    .Docs {
+      font-family: Roboto;
+    }
+    span {
+      font-family: WorkSans, sans-serif;
+      font-weight: 500;
+    }
   }
   span {
     font-size: 12px;
@@ -180,14 +197,16 @@
   }
 }
 
+/* The Styling for the header component for Tab screens and above. The Tab screen variable can be found in the _variables.scss file */
+
 .HeaderTab {
   width: 100%;
   height: 100px;
   background-color: white;
-  z-index: 30;
+  z-index: 100;
   position: fixed;
+  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
   color: variables.$header-text;
-  border: 2px rgb(70, 184, 8) solid;
 
   display: none;
   align-items: center;
@@ -200,6 +219,13 @@
     position: absolute;
     left: 30px;
     top: 35px;
+  }
+  .Docs {
+    font-family: Roboto;
+  }
+  span {
+    font-family: WorkSans, sans-serif;
+    font-weight: 500;
   }
   input {
     width: 400px;

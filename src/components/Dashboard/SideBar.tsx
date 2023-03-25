@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Style from "./Dashboard.module.scss";
 import SideBarOptionsItem from "./SideBarOptionsItem";
 
@@ -7,6 +8,7 @@ type SideBarProps = {
 };
 
 export default function SideBar(props: SideBarProps) {
+  const [selectedSideBarItem, setSelecetdSideBarItem] = useState("Users");
   /* For easier importing of SideBar svg assets */
 
   const sideBarSvgRootLocation = "/Icons/Dashboard/SideBar/";
@@ -119,6 +121,8 @@ export default function SideBar(props: SideBarProps) {
               icon={item.iconPath}
               name={item.name}
               key={index}
+              setSelectedSideBarItem={setSelecetdSideBarItem}
+              selectedsideBarItem={selectedSideBarItem}
             ></SideBarOptionsItem>
           );
         })}
@@ -131,6 +135,8 @@ export default function SideBar(props: SideBarProps) {
               icon={item.iconPath}
               name={item.name}
               key={index}
+              setSelectedSideBarItem={setSelecetdSideBarItem}
+              selectedsideBarItem={selectedSideBarItem}
             ></SideBarOptionsItem>
           );
         })}
@@ -142,6 +148,8 @@ export default function SideBar(props: SideBarProps) {
             <SideBarOptionsItem
               icon={item.iconPath}
               name={item.name}
+              setSelectedSideBarItem={setSelecetdSideBarItem}
+              selectedsideBarItem={selectedSideBarItem}
               key={index}
             ></SideBarOptionsItem>
           );

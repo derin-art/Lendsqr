@@ -15,6 +15,7 @@
   font-size: 16px;
   line-height: 19px;
   border: 2px rgb(6, 2, 2) solid;
+
   span {
     margin-left: 10px;
     font-size: $span-font-size;
@@ -42,6 +43,7 @@
     padding: 30px;
     box-sizing: border-box;
     border-radius: 4px;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     span {
       font-family: Worksans, sans-serif;
       font-size: 14px;
@@ -66,8 +68,12 @@
 
 .SwipeableDashboardHeadline {
   display: flex;
-  border: 2px rgb(32, 6, 6) solid;
+
   @include DashboardHeadlineDefault();
+  @media screen and (min-width: variables.$tab) {
+    display: none;
+  }
+  margin-bottom: 15px;
 }
 .SwipeableDashboardHeadlineCont {
   width: 100vw;
@@ -79,7 +85,7 @@
 .UserPageHeadline {
   display: none;
   justify-content: space-between;
-
+  margin-bottom: 40px;
   @include DashboardHeadlineDefault();
   @media screen and (min-width: variables.$tab) {
     display: flex;

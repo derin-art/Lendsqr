@@ -25,7 +25,7 @@ export default function Header(props: HeaderProps) {
           </span>{" "}
           <span className={Style.ProfilePicCont}>
             {" "}
-            <span>Docs</span>
+            <span className={Style.Docs}>Docs</span>
             <img className={Style.BellIcon} src={bellIconLocation}></img>
             <img src={profilePicLocation} className={Style.ProfilePic}></img>
             <span>Adedeji</span>
@@ -41,7 +41,7 @@ export default function Header(props: HeaderProps) {
         <div className={Style.InfoHeader}>
           <span className={Style.ProfilePicCont}>
             {" "}
-            <span>Docs</span>
+            <span className={Style.Docs}>Docs</span>
             <img className={Style.BellIcon} src={bellIconLocation}></img>
             <img src={profilePicLocation} className={Style.ProfilePic}></img>
             <span>Adedeji</span>

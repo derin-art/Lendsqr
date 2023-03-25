@@ -21,7 +21,7 @@ export default function Dashboard(props: DashboardProps) {
       <div className={`${Style.MainCont}`}>
         <SideBar isSideBarOpen={isSideBarOpen}></SideBar>
 
-        <div className={`${Style.CompCont} c`}>
+        <div className={`${Style.CompCont}`}>
           <div className={`${Style.ChildCont}`}>{props.children}</div>
         </div>
       </div>
