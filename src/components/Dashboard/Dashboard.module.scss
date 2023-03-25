@@ -197,7 +197,9 @@
       width: 115px;
     }
     .Docs {
-      font-family: Roboto;
+      font-family: RobotoRegular;
+      color: variables.$header-text;
+      border-bottom: 2px variables.$header-text solid;
     }
     span {
       font-family: WorkSans, sans-serif;
@@ -245,7 +247,9 @@
     top: 35px;
   }
   .Docs {
-    font-family: Roboto;
+    font-family: RobotoRegular;
+    color: variables.$header-text;
+    border-bottom: 2px variables.$header-text solid;
   }
   span {
     font-family: WorkSans, sans-serif;

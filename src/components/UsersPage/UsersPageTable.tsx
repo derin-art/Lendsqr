@@ -8,6 +8,7 @@ import { DashboardTableItemType } from "./Types/DashboardTableItemType";
 import { DashboardTableItemProps } from "./UsersPageTableItem";
 import FooterPaginationComponent from "./FooterPaginationComponent/FooterPaginationComponent";
 import { GridLoader } from "react-spinners";
+import { AnimatePresence, motion } from "framer-motion";
 
 export type fetchResultType = {
   isFetching: boolean;
@@ -18,6 +19,23 @@ export type fetchResultType = {
 };
 
 export default function DashboardTable() {
+  const variants = {
+    out: {
+      opacity: 0,
+
+      transition: {
+        duration: 0.5,
+      },
+    },
+    in: {
+      opacity: 1,
+
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+  const [isFilterCompRendered, setISFilterCompRendered] = useState(false);
   const [fetchResults, setFetchResults] = useState<fetchResultType>({
     isFetching: true,
     isError: false,
@@ -116,6 +134,7 @@ export default function DashboardTable() {
   return (
     <div className={Style.UsersPageTable}>
       <FilterComponent
+        isFilterCompRendered={isFilterCompRendered}
         setFetchResults={setFetchResults}
         userDataFlatArray={fetchResults.userDataFlatArray}
         filters={filters}
@@ -124,7 +143,12 @@ export default function DashboardTable() {
       <div className={Style.UsersPageTableHeader}>
         {tableHeaderHeadings.map((item, index) => {
           return (
-            <p key={index}>
+            <p
+              onClick={() => {
+                setISFilterCompRendered((prev) => !prev);
+              }}
+              key={index}
+            >
               <span>{item.name}</span>
               <img src={tableHeaderIcon}></img>
             </p>

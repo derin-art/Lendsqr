@@ -31,7 +31,7 @@ export default function FooterPaginationComponent(
 
   const handleNextPage = () => {
     props.setCurrentPage((prev) => {
-      if (prev === pageNumbers) {
+      if (prev === pageNumbers - 1) {
         return prev;
       } else return prev + 1;
     });

@@ -13,9 +13,15 @@ type FilterComponentProps = {
   setFilter: React.Dispatch<React.SetStateAction<DashboardTableItemProps>>;
   userDataFlatArray: DashboardTableItemType[];
   setFetchResults: React.Dispatch<React.SetStateAction<fetchResultType>>;
+  isFilterCompRendered: boolean;
 };
 
 export default function FilterComponent(props: FilterComponentProps) {
+  const variants = {
+    out: {},
+    in: {},
+  };
+
   const allOrganizationsFromUserArray = props.userDataFlatArray.map((item) => {
     return item.orgName;
   });
@@ -50,75 +56,87 @@ export default function FilterComponent(props: FilterComponentProps) {
   console.log("date", format(date, "PPp"));
 
   return (
-    <div className={`${Style.MainComp} `}>
-      {filterInputs.map((item, index) => {
-        if (item.optionsInput) {
-          return (
-            <div>
-              <label>{item.name}</label>
-              <select
-                value={item.value}
-                placeholder={item.name}
-                onChange={(e) => {
-                  handleFilterSelection(item.name, e.target.value);
-                }}
-                key={index}
-              >
-                <option label="Select" disabled selected></option>
-                {item.options.map((option, index) => {
-                  return (
-                    <option value={option} key={index}>
-                      {option}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-          );
-        }
+    <AnimatePresence>
+      <motion.div
+        variants={variants}
+        key={String(props.isFilterCompRendered)}
+        animate="in"
+        initial="out"
+        exit={"out"}
+      >
+        {props.isFilterCompRendered && (
+          <div className={`${Style.MainComp} `}>
+            {filterInputs.map((item, index) => {
+              if (item.optionsInput) {
+                return (
+                  <div>
+                    <label>{item.name}</label>
+                    <select
+                      value={item.value}
+                      placeholder={item.name}
+                      onChange={(e) => {
+                        handleFilterSelection(item.name, e.target.value);
+                      }}
+                      key={index}
+                    >
+                      <option label="Select" disabled selected></option>
+                      {item.options.map((option, index) => {
+                        return (
+                          <option value={option} key={index}>
+                            {option}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                );
+              }
 
-        return (
-          <div>
-            <label>{item.name}</label>
-            <input
-              onChange={(e) => {
-                handleFilterSelection(item.name, e.target.value);
-              }}
-              key={index}
-              type={item.dateInput ? "date" : "text"}
-              placeholder={item.name}
-            ></input>
+              return (
+                <div>
+                  <label>{item.name}</label>
+                  <input
+                    onChange={(e) => {
+                      handleFilterSelection(item.name, e.target.value);
+                    }}
+                    key={index}
+                    type={item.dateInput ? "date" : "text"}
+                    placeholder={item.name}
+                  ></input>
+                </div>
+              );
+            })}
+            <div>
+              <button
+                onClick={() => {
+                  const newFilteredArray = FilterFunction(
+                    props.filters.Username,
+                    props.filters.Organization,
+                    props.filters.Email,
+                    props.filters.DateJoined,
+                    props.filters.PhoneNumber,
+                    props.filters.Status,
+                    props.userDataFlatArray
+                  );
+                  const nestedFilteredArray = TurnsAFlatArrayIntoNestedArrays(
+                    10,
+                    newFilteredArray
+                  );
+                  props.setFetchResults((prev) => {
+                    return {
+                      ...prev,
+                      userDataArray: nestedFilteredArray,
+                      userDataFlatArray: newFilteredArray,
+                    };
+                  });
+                }}
+              >
+                Filter
+              </button>
+            </div>
           </div>
-        );
-      })}
-      <div>
-        <button
-          onClick={() => {
-            const newFilteredArray = FilterFunction(
-              props.filters.Username,
-              props.filters.Organization,
-              props.filters.Email,
-              props.filters.DateJoined,
-              props.filters.PhoneNumber,
-              props.filters.Status,
-              props.userDataFlatArray
-            );
-            const nestedFilteredArray = TurnsAFlatArrayIntoNestedArrays(
-              10,
-              newFilteredArray
-            );
-            props.setFetchResults((prev) => {
-              return {
-                ...prev,
-                userDataArray: nestedFilteredArray,
-                userDataFlatArray: newFilteredArray,
-              };
-            });
-          }}
-        >
-          Filter
-        </button>
-      </div>
-    </div>
+        )}
+      </motion.div>
+    </AnimatePresence>
   );
 }

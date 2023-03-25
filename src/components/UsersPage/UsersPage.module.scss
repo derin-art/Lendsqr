@@ -120,6 +120,7 @@
         font-family: WorkSans, sans-serif;
         font-weight: 600;
         color: variables.$input-border-col;
+        cursor: pointer;
         span {
           margin-right: 10px;
         }
@@ -168,6 +169,7 @@
       @media screen and (min-width: variables.$laptop) {
         width: 130px;
         position: relative;
+        z-index: 0;
       }
       img {
         width: 10px;
