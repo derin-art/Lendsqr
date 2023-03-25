@@ -108,6 +108,9 @@ export default function SideBar(props: SideBarProps) {
       <div className={` ${Style.SwitchOrg} `}>
         <img src={`${sideBarSvgRootLocation}/SwitchOrg.svg`}></img>
         <span>Switch Organization</span>
+        <button>
+          <img src={`${sideBarSvgRootLocation}/SwitchOrgDownArrow.svg`}></img>
+        </button>
       </div>
       <div className={Style.Dashboard}>
         <img src={`${sideBarSvgRootLocation}/Dashboard.svg`}></img>

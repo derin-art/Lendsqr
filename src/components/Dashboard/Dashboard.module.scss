@@ -76,7 +76,7 @@
   padding-bottom: 300px;
   background-color: white;
   position: fixed;
-
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
   left: 0%;
   width: 238px;
   z-index: 30;
@@ -89,12 +89,12 @@
     left: -100%;
   }
 
-  @media screen and (min-width: variables.$tab) {
+  @media screen and (min-width: variables.$laptop) {
     display: block;
     position: initial;
     max-width: 238px;
     height: fit-content;
-    width: 20vw;
+    width: 283px;
   }
 
   .MenuCont {
@@ -114,6 +114,10 @@
   .SwitchOrg {
     @include SideComp(52px);
     margin-top: 39px;
+    opacity: 1;
+    button {
+      margin-left: 5px;
+    }
   }
   .Dashboard {
     @include SideComp(41px);

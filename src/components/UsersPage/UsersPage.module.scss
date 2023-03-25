@@ -37,6 +37,7 @@
     max-width: 240px;
     height: 160px;
     width: 100%;
+
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -44,6 +45,9 @@
     box-sizing: border-box;
     border-radius: 4px;
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    @media screen and (min-width: variables.$tab) {
+      margin-right: 2px;
+    }
     span {
       font-family: Worksans, sans-serif;
       font-size: 14px;
@@ -138,7 +142,7 @@
 
     @media screen and (min-width: variables.$laptop) {
       width: 100%;
-      border: 1px #213f7d1a solid;
+      border-bottom: 1px #213f7d1a solid;
 
       justify-content: space-between;
     }
