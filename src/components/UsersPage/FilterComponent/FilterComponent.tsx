@@ -50,39 +50,45 @@ export default function FilterComponent(props: FilterComponentProps) {
   console.log("date", format(date, "PPp"));
 
   return (
-    <div className={`${Style.MainComp} c`}>
+    <div className={`${Style.MainComp} `}>
       {filterInputs.map((item, index) => {
         if (item.optionsInput) {
           return (
-            <select
-              value={item.value}
-              placeholder={item.name}
-              onChange={(e) => {
-                handleFilterSelection(item.name, e.target.value);
-              }}
-              key={index}
-            >
-              <option label="Select" disabled selected></option>
-              {item.options.map((option, index) => {
-                return (
-                  <option value={option} key={index}>
-                    {option}
-                  </option>
-                );
-              })}
-            </select>
+            <div>
+              <label>{item.name}</label>
+              <select
+                value={item.value}
+                placeholder={item.name}
+                onChange={(e) => {
+                  handleFilterSelection(item.name, e.target.value);
+                }}
+                key={index}
+              >
+                <option label="Select" disabled selected></option>
+                {item.options.map((option, index) => {
+                  return (
+                    <option value={option} key={index}>
+                      {option}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
           );
         }
 
         return (
-          <input
-            onChange={(e) => {
-              handleFilterSelection(item.name, e.target.value);
-            }}
-            key={index}
-            type={item.dateInput ? "date" : "text"}
-            placeholder={item.name}
-          ></input>
+          <div>
+            <label>{item.name}</label>
+            <input
+              onChange={(e) => {
+                handleFilterSelection(item.name, e.target.value);
+              }}
+              key={index}
+              type={item.dateInput ? "date" : "text"}
+              placeholder={item.name}
+            ></input>
+          </div>
         );
       })}
       <div>
