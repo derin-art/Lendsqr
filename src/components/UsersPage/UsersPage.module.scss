@@ -132,7 +132,7 @@
     display: flex;
     font-size: 12px;
 
-    width: 90%;
+    width: 100%;
     position: relative;
     overflow: auto;
 
@@ -152,13 +152,15 @@
     }
     .HorizontalHeader {
       z-index: 20;
-
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
       position: sticky;
       left: 0;
       width: fit-content;
+      background: white;
 
       display: flex;
       flex-direction: column;
+
       @media screen and (min-width: variables.$laptop) {
         width: 130px;
         position: relative;

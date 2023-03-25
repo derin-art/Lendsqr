@@ -32,12 +32,24 @@ export default function Header(props: HeaderProps) {
           </span>
         </div>
 
-        <input className=""></input>
+        <div className={Style.SearchBar}>
+          {" "}
+          <input className=""></input>
+          <button>
+            <img src="/Icons/Dashboard/Header/SearchButton.svg"></img>
+          </button>
+        </div>
       </div>
       <div className={`${Style.HeaderTab}`}>
         <img className={`${Style.Logo}`} src={logoIconLocation}></img>
 
-        <input className=""></input>
+        <div className={Style.SearchBar}>
+          {" "}
+          <input className=""></input>
+          <button>
+            <img src="/Icons/Dashboard/Header/SearchButton.svg"></img>
+          </button>
+        </div>
         <div className={Style.InfoHeader}>
           <span className={Style.ProfilePicCont}>
             {" "}
