@@ -8,6 +8,7 @@ import { GridLoader } from "react-spinners";
 export default function UserDetailPage() {
   const { id } = useParams();
 
+  const [selectedHeader, setSelectedHeader] = useState("General Details");
   const [userDetails, setUserDetails] = useState<DashboardTableItemType>();
 
   type fetchResults = {
@@ -144,7 +145,7 @@ export default function UserDetailPage() {
   const headingData = [
     {
       jsx: (
-        <div>
+        <div className={Style.UserName}>
           <img src={userDetails?.profile.avatar}></img>
           <span>
             <p>{`${userDetails?.profile.firstName} ${userDetails?.profile.lastName}`}</p>
@@ -155,7 +156,7 @@ export default function UserDetailPage() {
     },
     {
       jsx: (
-        <span>
+        <span className={Style.UserTier}>
           <p>User's Tier</p>
           <div className={Style.UserTierStarCont}>
             {[1, 2, 3].map((item, index) => {
@@ -174,12 +175,21 @@ export default function UserDetailPage() {
 
     {
       jsx: (
-        <span>
+        <span className={Style.UserBank}>
           <p>{userDetails?.accountBalance}</p>
           <div>{userDetails?.accountNumber}/Providus Bank</div>
         </span>
       ),
     },
+  ];
+
+  const headerButtons = [
+    "General Details",
+    "Documents",
+    "Bank Details",
+    "Loans",
+    "Savings",
+    "App and System",
   ];
 
   return (
@@ -191,6 +201,21 @@ export default function UserDetailPage() {
               <div className={Style.HeaderDetailsCont} key={index}>
                 {item.jsx}
               </div>
+            );
+          })}
+        </div>
+        <div className={Style.HeaderButtonsCont}>
+          {headerButtons.map((item, index) => {
+            return (
+              <button
+                onClick={() => {
+                  setSelectedHeader(item);
+                }}
+                className={`${selectedHeader === item ? Style.isSelected : ""}`}
+                key={index}
+              >
+                {item}
+              </button>
             );
           })}
         </div>
