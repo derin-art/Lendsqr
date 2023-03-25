@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { DashboardTableItemType } from "../UsersPage/Types/DashboardTableItemType";
 import axios from "axios";
 import { GridLoader } from "react-spinners";
+import FetchResponseComponent from "../FetchResponseComponent/FetchResponseComponent";
 
 export default function UserDetailPage() {
   const { id } = useParams();
@@ -221,8 +222,11 @@ export default function UserDetailPage() {
         </div>
       </div>
       <div className={Style.UserDetailsComp}>
-        {isgoodResponseState &&
-          userDetailPageInfo.map((section, index) => {
+        <FetchResponseComponent
+          isErrorState={isErrorState}
+          isGoodResponseState={isgoodResponseState}
+          isLoadingState={isLoadingState}
+          goodResponse={userDetailPageInfo.map((section, index) => {
             return (
               <div key={index} className={Style.UserDetailsCompSection}>
                 <span>{section.name}</span>
@@ -243,12 +247,7 @@ export default function UserDetailPage() {
               </div>
             );
           })}
-        {isErrorState && <div>An error Occured</div>}
-        {isLoadingState && (
-          <div>
-            <GridLoader></GridLoader>
-          </div>
-        )}
+        ></FetchResponseComponent>
       </div>
     </div>
   );
