@@ -21,7 +21,7 @@ function FilterFunction(
     phoneNumber: PhoneNumber,
   };
 
-  const filteredArray = Array.filter((item) => {
+  const filteredArray = Array.filter((item: DashboardTableItemType) => {
     for (let key in filterObject) {
       /* Using Type assertion to assert that dashboardItemKey is the type of one of the keys of the UsersPageTableItemProps/Object   */
       const dashboardItemkey = key as keyof typeof filterObject;

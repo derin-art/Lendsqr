@@ -141,36 +141,90 @@ export default function UserDetailPage() {
 
   const isgoodResponseState = !fetchResults.isError && !fetchResults.isFetching;
 
-  return (
-    <div className={Style.UserDetailsComp}>
-      {isgoodResponseState &&
-        userDetailPageInfo.map((section, index) => {
-          return (
-            <div key={index} className={Style.UserDetailsCompSection}>
-              <span>{section.name}</span>
-              {section.subHeaders.map((sub, index) => {
-                return (
-                  <div key={index} className={Style.SubHeadings}>
-                    {sub.map((item, index) => {
-                      return (
-                        <div key={index}>
-                          <p> {item.name}</p>
-                          {item.value}
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      {isErrorState && <div>An error Occured</div>}
-      {isLoadingState && (
+  const headingData = [
+    {
+      jsx: (
         <div>
-          <GridLoader></GridLoader>
+          <img src={userDetails?.profile.avatar}></img>
+          <span>
+            <p>{`${userDetails?.profile.firstName} ${userDetails?.profile.lastName}`}</p>
+            <div>{userDetails?.accountNumber}</div>
+          </span>
         </div>
-      )}
+      ),
+    },
+    {
+      jsx: (
+        <span>
+          <p>User's Tier</p>
+          <div className={Style.UserTierStarCont}>
+            {[1, 2, 3].map((item, index) => {
+              return (
+                <img
+                  className={Style.UserTierStar}
+                  key={index}
+                  src="/Icons/UserDetailsPage/StarIcon.svg"
+                ></img>
+              );
+            })}
+          </div>
+        </span>
+      ),
+    },
+
+    {
+      jsx: (
+        <span>
+          <p>{userDetails?.accountBalance}</p>
+          <div>{userDetails?.accountNumber}/Providus Bank</div>
+        </span>
+      ),
+    },
+  ];
+
+  return (
+    <div>
+      <div className={Style.UserDetailsCompHeader}>
+        <div className={Style.HeaderDetails}>
+          {headingData.map((item, index) => {
+            return (
+              <div className={Style.HeaderDetailsCont} key={index}>
+                {item.jsx}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className={Style.UserDetailsComp}>
+        {isgoodResponseState &&
+          userDetailPageInfo.map((section, index) => {
+            return (
+              <div key={index} className={Style.UserDetailsCompSection}>
+                <span>{section.name}</span>
+                {section.subHeaders.map((sub, index) => {
+                  return (
+                    <div key={index} className={Style.SubHeadings}>
+                      {sub.map((item, index) => {
+                        return (
+                          <div key={index}>
+                            <p> {item.name}</p>
+                            {item.value}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        {isErrorState && <div>An error Occured</div>}
+        {isLoadingState && (
+          <div>
+            <GridLoader></GridLoader>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -6,9 +6,12 @@
   background: rgb(255, 255, 255);
   padding: 30px;
   overflow: hidden;
+  border-radius: 4px;
 
   box-sizing: border-box;
   .UserDetailsCompSection {
+    border-bottom: 1px rgba(variables.$header-text, 0.1) solid;
+
     span {
       font-family: WorkSans, sans-serif;
       size: 16px;
@@ -17,16 +20,60 @@
       margin-bottom: 30px;
     }
     .SubHeadings {
+      @media screen and (min-width: variables.$laptop) {
+        display: flex;
+        width: 100%;
+      }
       div {
         margin-bottom: 30px;
         font-family: WorkSans, sans-serif;
 
         color: #545f7d;
+        @media screen and (min-width: variables.$laptop) {
+          margin-right: 75px;
+        }
         p {
           font-size: 12px;
           margin-bottom: 8px;
+          text-transform: uppercase;
         }
       }
     }
   }
+}
+
+.UserDetailsCompHeader {
+  .HeaderDetails {
+    display: flex;
+    .HeaderDetailsCont {
+      display: flex;
+      border: 2px red solid;
+      padding: 0 30px;
+
+      align-items: center;
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          border-radius: 50%;
+          height: 100px;
+          width: 100px;
+        }
+        .UserTierStar {
+          height: 14px;
+          width: 14px;
+        }
+
+        span {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
+
+.UserTierStarCont {
+  border: 2px red solid;
+  display: flex;
 }
