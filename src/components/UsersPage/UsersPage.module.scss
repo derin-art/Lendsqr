@@ -1,0 +1,266 @@
+@use "../variables";
+
+@mixin SideComp($margin-bottom, $span-font-size: 16px) {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  padding-left: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  margin-bottom: $margin-bottom;
+  font-family: WorkSans, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  border: 2px rgb(6, 2, 2) solid;
+
+  span {
+    margin-left: 10px;
+    font-size: $span-font-size;
+    font-weight: 400;
+  }
+}
+
+@mixin Status($color) {
+  text-align: left;
+  padding: 6px 13px;
+  border-radius: 100px;
+  background-color: rgba($color, 0.1);
+  color: $color;
+  width: fit-content;
+}
+
+@mixin DashboardHeadlineDefault {
+  .DashboardHeadlineItem {
+    max-width: 240px;
+    height: 160px;
+    width: 100%;
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    @media screen and (min-width: variables.$tab) {
+      margin-right: 2px;
+    }
+    span {
+      font-family: Worksans, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: variables.$input-border-col;
+    }
+    div {
+      font-family: Worksans, sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: variables.$header-text;
+    }
+    img {
+      width: 40px;
+    }
+  }
+}
+
+.UsersPage {
+  background-color: #e5e5e5;
+}
+
+.SwipeableDashboardHeadline {
+  display: flex;
+
+  @include DashboardHeadlineDefault();
+  @media screen and (min-width: variables.$tab) {
+    display: none;
+  }
+  margin-bottom: 15px;
+}
+.SwipeableDashboardHeadlineCont {
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+}
+
+.UserPageHeadline {
+  display: none;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  @include DashboardHeadlineDefault();
+  @media screen and (min-width: variables.$tab) {
+    display: flex;
+  }
+}
+
+.UsersPageTable {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  background-color: white;
+  padding: 30px;
+  box-sizing: border-box;
+  .UsersPageTableHeader {
+    display: none;
+    @media screen and (min-width: variables.$laptop) {
+      width: 100%;
+
+      justify-content: space-between;
+      display: flex;
+      p {
+        width: 100px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        font-family: WorkSans, sans-serif;
+        font-weight: 600;
+        color: variables.$input-border-col;
+        cursor: pointer;
+        span {
+          margin-right: 10px;
+        }
+        img {
+          margin-left: 10;
+          height: 16;
+          width: 10;
+        }
+      }
+    }
+  }
+
+  .UsersPageTableItem {
+    display: flex;
+    font-size: 12px;
+
+    width: 100%;
+    position: relative;
+    overflow: auto;
+
+    @media screen and (min-width: variables.$laptop) {
+      overflow: hidden;
+    }
+
+    .PopUpButton {
+      all: unset;
+      position: relative;
+      display: flex;
+      width: 9px;
+      justify-content: center;
+      align-items: flex-end;
+      height: fit-content;
+      margin: auto 0;
+      margin-right: 4px;
+      top: 30%;
+      @media screen and (min-width: variables.$laptop) {
+        position: absolute;
+        right: -2px;
+        margin-right: 0;
+      }
+      cursor: pointer;
+      .PopUpButtonIcon {
+        width: 3px;
+        height: 14px;
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+    border-bottom: 1px #213f7d1a solid;
+
+    @media screen and (min-width: variables.$laptop) {
+      width: 100%;
+      border-bottom: 1px #213f7d1a solid;
+
+      justify-content: space-between;
+    }
+    :nth-child(1) {
+      width: 100px;
+
+      font-size: 12px;
+      p {
+        font-size: 12px;
+      }
+    }
+    .HorizontalHeader {
+      z-index: 20;
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+      position: sticky;
+      left: 0;
+      width: fit-content;
+
+      background-color: #e5e5e5;
+      padding: 0 4px;
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: variables.$laptop) {
+        width: 130px;
+        position: relative;
+        z-index: 0;
+        background-color: white;
+      }
+      img {
+        width: 10px;
+        height: 10px;
+        margin-left: 10px;
+      }
+      p {
+        display: flex;
+        font-size: 12px;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        @media screen and (min-width: variables.$laptop) {
+          display: none;
+        }
+      }
+    }
+  }
+  .UsersPageTableItem > * {
+    color: variables.$input-border-col;
+    font-family: WorkSans, sans-serif;
+    width: fit-content;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0;
+
+    p {
+      font-weight: 600;
+      @media screen and (min-width: variables.$laptop) {
+        display: none;
+      }
+    }
+    .Active {
+      @include Status(#39cd62);
+    }
+    .Inactive {
+      @include Status(#545f7d);
+    }
+    .Pending {
+      @include Status(#e9b200);
+    }
+    .Blacklisted {
+      @include Status((#e4033b));
+    }
+    margin-right: 35px;
+    @media screen and (min-width: variables.$laptop) {
+      display: flex;
+      padding: 0px;
+      width: 100px;
+      height: fit-content;
+      max-width: 100px;
+      min-width: 100px;
+
+      height: 50px;
+      word-break: break-all;
+      margin-right: 0px;
+    }
+  }
+}
