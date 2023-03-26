@@ -27,6 +27,11 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
   } else {
     statusClassName = Style.Blacklisted;
   }
+
+  const handlePopUpButtonClick = () => {
+    props.setIndexOfPopUpMenuOpen(props.id);
+  };
+
   return (
     <div>
       <div className={Style.UsersPageTableItem}>
@@ -56,14 +61,23 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
           <p>STATUS</p>
           <div className={statusClassName}> {props.Status}</div>
         </span>
-        <button className={Style.PopUpButton}>
+        <button
+          onClick={() => {
+            handlePopUpButtonClick();
+          }}
+          className={Style.PopUpButton}
+        >
           <img
             className={Style.PopUpButtonIcon}
             src="/Icons/Dashboard/DashboardTableItem/PopUpMenuIcon.svg"
           ></img>
         </button>
       </div>
-      {props.indexOfPopUpMenuOpen === props.id && <PopUpMenu></PopUpMenu>}
+      {props.indexOfPopUpMenuOpen === props.id && (
+        <PopUpMenu
+          setIndexOfPopUpMenuOpen={props.setIndexOfPopUpMenuOpen}
+        ></PopUpMenu>
+      )}
     </div>
   );
 }

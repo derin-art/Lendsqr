@@ -1,6 +1,12 @@
 import Style from "./PopUpMenu.module.scss";
+import { useEffect, useRef } from "react";
 
-export default function PopUpMenu() {
+type PopUpMenuProps = {
+  setIndexOfPopUpMenuOpen: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export default function PopUpMenu(props: PopUpMenuProps) {
+  const ref: any = useRef();
   const popUpMenuSvgRootLocation = "Icons/UsersPage/PopUpMenu";
   const popUpMenuButtons = [
     {
@@ -16,8 +22,26 @@ export default function PopUpMenu() {
       svg: `${popUpMenuSvgRootLocation}/ActivateUser.svg`,
     },
   ];
+
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event: any) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        props.setIndexOfPopUpMenuOpen("");
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
+
   return (
-    <div className={Style.PopUpMenu}>
+    <div ref={ref} className={Style.PopUpMenu}>
       {popUpMenuButtons.map((item, index) => {
         return (
           <button key={index}>
