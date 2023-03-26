@@ -36,6 +36,8 @@ export default function DashboardTable() {
       },
     },
   };
+
+  const [indexOfPopUpMenuOpen, setIndexOfPopUpMenuOpen] = useState("");
   const [isFilterCompRendered, setISFilterCompRendered] = useState(false);
   const [fetchResults, setFetchResults] = useState<fetchResultType>({
     isFetching: true,
@@ -43,7 +45,6 @@ export default function DashboardTable() {
     status: null,
     userDataArray: [],
     userDataFlatArray: [],
-    
   });
 
   const [filters, setFilters] = useState<DashboardTableItemProps>({
@@ -53,6 +54,9 @@ export default function DashboardTable() {
     DateJoined: "",
     PhoneNumber: "",
     Status: "",
+    setIndexOfPopUpMenuOpen: () => {},
+    indexOfPopUpMenuOpen: "",
+    id: "",
   });
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -170,9 +174,12 @@ export default function DashboardTable() {
                 Email={item.email}
                 Organization={item.orgName}
                 PhoneNumber={item.phoneNumber}
+                setIndexOfPopUpMenuOpen={setIndexOfPopUpMenuOpen}
                 Status={item.status}
                 Username={item.userName}
                 key={index}
+                id={item.id}
+                indexOfPopUpMenuOpen={indexOfPopUpMenuOpen}
               ></DashboardTableItem>
             );
           })

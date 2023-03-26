@@ -1,0 +1,36 @@
+.PopUpMenu {
+  position: absolute;
+
+  width: 180px;
+  height: 130px;
+  padding: 20px;
+  padding-left: 43px;
+  padding-right: 43px;
+  border-radius: 4px;
+  right: 0;
+  font-family: WorkSans, sans-serif;
+  font-size: 12px;
+
+  border: 2px red solid;
+  background-color: white;
+  filter: drop-shadow(3px, 5px rgba(0, 0, 0, 0.04));
+  box-sizing: border-box;
+
+  align-content: flex-start;
+  z-index: 60;
+  filter: drop-shadow(3px, 5px rgba(0, 0, 0, 0.04));
+  button {
+    font-family: WorkSans, sans-serif;
+    font-weight: 500;
+    display: flex;
+
+    margin-bottom: 20px;
+    position: relative;
+    img {
+      all: unset;
+      height: 12.5px;
+      position: absolute;
+      left: -20px;
+    }
+  }
+}

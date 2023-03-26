@@ -1,4 +1,6 @@
 import Style from "./UsersPage.module.scss";
+import PopUpMenu from "./PopUpMenu/PopUpMenu";
+import React from "react";
 
 export type DashboardTableItemProps = {
   Organization: string;
@@ -7,6 +9,9 @@ export type DashboardTableItemProps = {
   PhoneNumber: string;
   DateJoined: string;
   Status: string;
+  setIndexOfPopUpMenuOpen: React.Dispatch<React.SetStateAction<string>>;
+  indexOfPopUpMenuOpen: string;
+  id: string;
 };
 
 export default function DashboardTableItem(props: DashboardTableItemProps) {
@@ -23,39 +28,42 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
     statusClassName = Style.Blacklisted;
   }
   return (
-    <div className={Style.UsersPageTableItem}>
-      <span className={Style.HorizontalHeader}>
-        <p>
-          ORGANIZATION <img src={tableHeaderIcon}></img>
-        </p>
-        {props.Organization}
-      </span>
-      <span>
-        <p>USERNAME</p>
-        {props.Username}
-      </span>
-      <span>
-        <p>EMAIL</p>
-        {props.Email}
-      </span>
-      <span>
-        <p>PHONE NUMBER</p>
-        {props.PhoneNumber}
-      </span>
-      <span>
-        <p>DATE JOINED</p>
-        {props.DateJoined}
-      </span>
-      <span>
-        <p>STATUS</p>
-        <div className={statusClassName}> {props.Status}</div>
-      </span>
-      <button className={Style.PopUpButton}>
-        <img
-          className={Style.PopUpButtonIcon}
-          src="/Icons/Dashboard/DashboardTableItem/PopUpMenuIcon.svg"
-        ></img>
-      </button>
+    <div>
+      <div className={Style.UsersPageTableItem}>
+        <span className={Style.HorizontalHeader}>
+          <p>
+            ORGANIZATION <img src={tableHeaderIcon}></img>
+          </p>
+          {props.Organization}
+        </span>
+        <span>
+          <p>USERNAME</p>
+          {props.Username}
+        </span>
+        <span>
+          <p>EMAIL</p>
+          {props.Email}
+        </span>
+        <span>
+          <p>PHONE NUMBER</p>
+          {props.PhoneNumber}
+        </span>
+        <span>
+          <p>DATE JOINED</p>
+          {props.DateJoined}
+        </span>
+        <span>
+          <p>STATUS</p>
+          <div className={statusClassName}> {props.Status}</div>
+        </span>
+        <button className={Style.PopUpButton}>
+          <img
+            className={Style.PopUpButtonIcon}
+            src="/Icons/Dashboard/DashboardTableItem/PopUpMenuIcon.svg"
+          ></img>
+        </button>
+      </div>
+      {props.indexOfPopUpMenuOpen === props.id && <PopUpMenu></PopUpMenu>}
     </div>
   );
 }
