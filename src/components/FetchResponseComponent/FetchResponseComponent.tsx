@@ -13,14 +13,18 @@ export default function FetchResponseComponent(props: FetchResponseComponent) {
     <div className={Style.FetchResponseCont}>
       {props.isGoodResponseState && props.goodResponse}
       {props.isErrorState && (
-        <div className={Style.ErrorRes}>
+        <div placeholder="errorResponse" className={Style.ErrorRes}>
           An error occured. Please check your internet connection and try again
         </div>
       )}
       {props.isLoadingState && (
         <div className={Style.GridLoader}>
           {" "}
-          <GridLoader size={30} color="#39cdcc"></GridLoader>
+          <GridLoader
+            placeholder="loadingElement"
+            size={30}
+            color="#39cdcc"
+          ></GridLoader>
         </div>
       )}
     </div>
