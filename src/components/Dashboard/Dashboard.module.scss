@@ -37,6 +37,10 @@
   overflow-y: auto;
   background-color: #e5e5e5;
 
+  height: 99.9vh;
+  @media screen and (min-width: variables.$laptop) {
+    height: fit-content;
+  }
   .MainCont {
     display: flex;
     width: 100%;
