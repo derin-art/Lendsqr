@@ -130,7 +130,7 @@ export default function UserPageTable() {
   ];
 
   const tableHeaderIcon =
-    "/Icons/Dashboard/DashboardTableItem/TableHeaderIcon.svg";
+    "/Icons/UsersPage/UserPageTableItem/TableHeaderIcon.svg";
 
   const isErrorState = fetchResults.isError && !fetchResults.isFetching;
 
@@ -201,23 +201,6 @@ export default function UserPageTable() {
           })
         }
       ></FetchResponseComponent>
-
-      {/*    {isgoodResponseState &&
-        fetchResults.userDataArray[currentPage].map((item, index) => {
-          return (
-            <DashboardTableItem
-              DateJoined={item.createdAt}
-              Email={item.email}
-              Organization={item.orgName}
-              PhoneNumber={item.phoneNumber}
-              Status={item.status}
-              Username={item.userName}
-              key={index}
-            ></DashboardTableItem>
-          );
-        })}
-      {isLoadingState && <GridLoader></GridLoader>}
-      {isErrorState && <p>An Error has Ocurred</p>} */}
 
       <FooterPaginationComponent
         currentPage={currentPage}
