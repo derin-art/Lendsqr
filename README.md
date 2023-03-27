@@ -8,8 +8,8 @@ This project essentially boils down to four pages, A login page, A users page, a
   
   
   Steps to run the project: 
-  npm install
-  npm start ("The project runs on http://localhost:3000)
+  npm install,
+  npm start ("The project runs on http://localhost:3000),
   npm test - for running the tests written for the app 
   
   
