@@ -11,7 +11,7 @@ export default function UserPageHeadlineItem(
 ) {
   return (
     <div className={Style.DashboardHeadlineItem}>
-      <img src={props.icon}></img>
+      <img alt={props.name} src={props.icon}></img>
       <span>{props.name}</span>
       <div>{props.amount}</div>
     </div>

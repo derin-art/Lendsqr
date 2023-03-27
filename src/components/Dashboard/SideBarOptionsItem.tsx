@@ -22,7 +22,7 @@ export default function SideBarOptionsItem(props: SideBarOptionsCompProps) {
         props.name === props.selectedsideBarItem ? Style.isSelected : ""
       } `}
     >
-      <img src={props.icon}></img>
+      <img alt={props.name} src={props.icon}></img>
       <span>{props.name}</span>
     </button>
   );

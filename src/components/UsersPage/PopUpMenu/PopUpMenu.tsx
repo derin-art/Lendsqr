@@ -50,14 +50,14 @@ export default function PopUpMenu(props: PopUpMenuProps) {
           return (
             <Link key={index} to={`/UserDetails/${props.id}`}>
               <button key={index}>
-                <img src={item.svg}></img> {item.name}
+                <img alt={item.name} src={item.svg}></img> {item.name}
               </button>
             </Link>
           );
         } else {
           return (
             <button key={index}>
-              <img src={item.svg}></img> {item.name}
+              <img alt={item.name} src={item.svg}></img> {item.name}
             </button>
           );
         }

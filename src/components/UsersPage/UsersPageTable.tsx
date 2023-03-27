@@ -157,7 +157,7 @@ export default function UserPageTable() {
               key={index}
             >
               <span>{item.name}</span>
-              <img src={tableHeaderIcon}></img>
+              <img alt="Table Header Icon" src={tableHeaderIcon}></img>
             </p>
           );
         })}

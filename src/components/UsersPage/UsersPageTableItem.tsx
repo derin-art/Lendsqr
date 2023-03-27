@@ -37,7 +37,7 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
       <div className={Style.UsersPageTableItem}>
         <span className={Style.HorizontalHeader}>
           <p>
-            ORGANIZATION <img src={tableHeaderIcon}></img>
+            ORGANIZATION <img alt="Header Icon" src={tableHeaderIcon}></img>
           </p>
           {props.Organization}
         </span>
@@ -68,6 +68,7 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
           className={Style.PopUpButton}
         >
           <img
+            alt="PopUp Menu Button"
             className={Style.PopUpButtonIcon}
             src="/Icons/Dashboard/DashboardTableItem/PopUpMenuIcon.svg"
           ></img>
