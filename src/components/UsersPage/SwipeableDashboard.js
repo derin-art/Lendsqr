@@ -33,19 +33,19 @@ export default function SwipeableDashboard() {
   ];
 
   return (
-    <div className={Style.SwipeableDashboardHeadlineMainCont}>
+    <div className={Style.SwipeableUserPageHeadlineMainCont}>
       <div>
         <SwipeableViews
           onChangeIndex={(index) => {
             setSwipeableIndex(index);
           }}
-          enableMouseEvents
+          disabled={true}
           index={swipeableIndex}
-          className={Style.SwipeableDashboardHeadline}
+          className={Style.SwipeableUserPageHeadline}
         >
           {dashboardHeadlineItemsList.map((item, index) => {
             return (
-              <div key={index} className={Style.SwipeableDashboardHeadlineCont}>
+              <div key={index} className={Style.SwipeableUserPageHeadlineCont}>
                 {" "}
                 <UserPageHeadlineItem
                   amount={item.amount}
@@ -58,7 +58,7 @@ export default function SwipeableDashboard() {
           })}
         </SwipeableViews>
       </div>
-      <div className={Style.DashboardHeadlineButtons}>
+      <div className={Style.UserPageHeadlineButtons}>
         {dashboardHeadlineItemsList.map((item, index) => {
           return (
             <button

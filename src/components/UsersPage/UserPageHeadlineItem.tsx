@@ -1,16 +1,14 @@
 import Style from "./UsersPage.module.scss";
 
-type DashboardHeadlineItemProps = {
+type UserPageHeadlineItemProps = {
   icon: string;
   name: string;
   amount: number;
 };
 
-export default function UserPageHeadlineItem(
-  props: DashboardHeadlineItemProps
-) {
+export default function UserPageHeadlineItem(props: UserPageHeadlineItemProps) {
   return (
-    <div className={Style.DashboardHeadlineItem}>
+    <div className={Style.UserPageHeadlineItem}>
       <img alt={props.name} src={props.icon}></img>
       <span>{props.name}</span>
       <div>{props.amount}</div>

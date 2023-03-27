@@ -33,7 +33,7 @@
 }
 
 @mixin DashboardHeadlineDefault {
-  .DashboardHeadlineItem {
+  .UserPageHeadlineItem {
     max-width: 240px;
     height: 160px;
     width: 100%;
@@ -71,14 +71,14 @@
   background-color: #e5e5e5;
 }
 
-.SwipeableDashboardHeadlineMainCont {
+.SwipeableUserPageHeadlineMainCont {
   @media screen and (min-width: variables.$tab) {
     display: none;
   }
   background: white;
   padding: 40px 0px;
   margin-bottom: 40px;
-  .DashboardHeadlineButtons {
+  .UserPageHeadlineButtons {
     display: flex;
     font-size: 10px;
     font-family: WorkSans, sans-serif;
@@ -93,7 +93,7 @@
   }
 }
 
-.SwipeableDashboardHeadline {
+.SwipeableUserPageHeadline {
   display: flex;
 
   @include DashboardHeadlineDefault();
@@ -102,7 +102,7 @@
   }
   margin-bottom: 15px;
 }
-.SwipeableDashboardHeadlineCont {
+.SwipeableUserPageHeadlineCont {
   width: 100vw;
   border: 1px rgba(variables.$header-text, 0.2) solid;
   display: flex;
