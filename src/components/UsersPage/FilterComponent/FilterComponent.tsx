@@ -58,7 +58,7 @@ export default function FilterComponent(props: FilterComponentProps) {
     function handleClickOutside(event: any) {
       if (ref.current && !ref.current.contains(event.target)) {
         /* To be make the function only work for Tablet viewports and above */
-        if (window.innerWidth < 640) return;
+        return;
         props.setISFilterCompRendered(false);
       }
     }
