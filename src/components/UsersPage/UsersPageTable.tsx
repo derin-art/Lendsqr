@@ -19,7 +19,7 @@ export type fetchResultType = {
   userDataFlatArray: DashboardTableItemType[];
 };
 
-export default function DashboardTable() {
+export default function UserPageTable() {
   const variants = {
     out: {
       opacity: 0,
@@ -167,6 +167,7 @@ export default function DashboardTable() {
         isLoadingState={isLoadingState}
         goodResponse={
           isgoodResponseState &&
+          fetchResults.userDataArray[currentPage] &&
           fetchResults.userDataArray[currentPage].map((item, index) => {
             return (
               <DashboardTableItem
