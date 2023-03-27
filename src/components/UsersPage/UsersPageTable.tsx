@@ -62,10 +62,6 @@ export default function UserPageTable() {
 
   const [currentPage, setCurrentPage] = useState(0);
 
-  console.log(filters, "sfd");
-
-  console.log("SDSDSDSD", process.env.REACT_APP_LENDSQR_USERS);
-
   useEffect(() => {
     const response = async () => {
       setFetchResults((prev) => {
@@ -74,7 +70,6 @@ export default function UserPageTable() {
       const res = await axios
         .get(`${process.env.REACT_APP_LENDSQR_USERS}`)
         .catch((err) => {
-          console.log(err);
           setFetchResults((prev) => {
             return { ...prev, isFetching: false, isError: true, status: "500" };
           });
@@ -102,7 +97,7 @@ export default function UserPageTable() {
             10,
             modefiedResDatatoAddStatus
           );
-          console.log("sdsd", nestedUserDataArray);
+
           return {
             ...prev,
             userDataArray: nestedUserDataArray,
@@ -117,8 +112,6 @@ export default function UserPageTable() {
     };
     response();
   }, []);
-
-  console.log("res", fetchResults);
 
   const tableHeaderHeadings = [
     { name: "ORGANIZATION" },

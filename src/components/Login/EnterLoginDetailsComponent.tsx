@@ -16,7 +16,6 @@ export default function EnterLoginDetailsComponent() {
   const toastId2 = "custom";
 
   useEffect(() => {
-    console.log("heyy");
     toast.info(
       "Hi User. Type any Text into the Email and Password fields and click the Login button, to access the Users Page. Click to close ",
       {

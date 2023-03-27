@@ -43,7 +43,6 @@ export default function UserDetailPage() {
       const res = await axios
         .get(`${process.env.REACT_APP_LENDSQR_USERS}/${id}`)
         .catch((err) => {
-          console.log(err);
           setFetchResults((prev) => {
             return {
               ...prev,

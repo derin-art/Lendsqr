@@ -48,7 +48,6 @@ export default function FilterComponent(props: FilterComponentProps) {
   ];
 
   const handleFilterSelection = (key: string, val: string) => {
-    console.log("sent");
     props.setFilter((prev) => {
       return { ...prev, [key]: val };
     });

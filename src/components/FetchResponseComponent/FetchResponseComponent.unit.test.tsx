@@ -16,7 +16,6 @@ describe("Tests for the FetchResponseComponent", () => {
       ></FetchResponseComponent>
     );
 
-    console.log(screen.debug());
     const goodResponseElement = screen.getByPlaceholderText("goodResponse");
     expect(goodResponseElement).toBeInTheDocument();
   });

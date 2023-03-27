@@ -15,7 +15,6 @@ export default function SideBarOptionsItem(props: SideBarOptionsCompProps) {
   return (
     <button
       onClick={() => {
-        console.log(props.name === props.selectedsideBarItem);
         handleSideBarItemClick();
       }}
       className={`${Style.SideBarOptionsComp} ${
