@@ -136,6 +136,7 @@ export default function FilterComponent(props: FilterComponentProps) {
               Reset
             </button>
             <button
+              className={Style.FilterBtn}
               onClick={() => {
                 const newFilteredArray = FilterFunction(
                   props.filters.Username,
