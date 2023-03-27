@@ -1,19 +1,54 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Style from "./Login.module.scss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import {
+  ifErrorUpdate,
+  notify,
+  toastOptions,
+  update,
+} from "../../hooks/useToastifyPopUp";
 
 export default function EnterLoginDetailsComponent() {
+  const navigate = useNavigate();
+  const toastId = useRef();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLoginClick = () => {
+    notify(toastId, "Loading");
+    if (!email) {
+      ifErrorUpdate(toastId, "Please enter an email address");
+      return;
+    }
+    if (!password) {
+      ifErrorUpdate(toastId, "Please enter a Password");
+      return;
+    }
+    navigate("/Dashboard");
+  };
   return (
     <div className={`${Style.LoginDetailComp}`}>
+      <ToastContainer></ToastContainer>
       <div className={`${Style.headingCont}`}>
         <h1 className={Style.h1}>Welcome!</h1>
         <h2 className={Style.h2}>Enter details to login.</h2>
       </div>
       <div className={`w-full ${Style.inputCont}`}>
-        <input placeholder="Email"></input>
+        <input
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          placeholder="Email"
+        ></input>
       </div>
       <div className={`w-full ${Style.inputCont}`}>
         <input
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
           type={isPasswordVisible ? "text" : "password"}
           placeholder="Password"
         ></input>
@@ -30,7 +65,13 @@ export default function EnterLoginDetailsComponent() {
         <button>FORGOT PASSWORD?</button>
       </div>
       <div className={`${Style.LoginBtnCont}`}>
-        <button>LOG IN</button>
+        <button
+          onClick={() => {
+            handleLoginClick();
+          }}
+        >
+          LOG IN
+        </button>
       </div>
     </div>
   );
