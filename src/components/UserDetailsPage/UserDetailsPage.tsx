@@ -25,6 +25,17 @@ export default function UserDetailPage() {
   });
 
   useEffect(() => {
+    if (id) {
+      /* Checks if userDetails already exists in local Storage, if it does, it proceeds to set it as the userDetails State, if it dosen't it performs a fetch request to the Api */
+      const localStorageUserData = localStorage.getItem(id);
+      if (localStorageUserData) {
+        setUserDetails(JSON.parse(localStorageUserData));
+        setFetchResults((prev) => {
+          return { ...prev, isFetching: false };
+        });
+        return;
+      }
+    }
     const response = async () => {
       setFetchResults((prev) => {
         return { ...prev, isFetching: true, isError: false };
@@ -45,6 +56,8 @@ export default function UserDetailPage() {
         });
       if (res.data) {
         setUserDetails(res.data);
+        /* Storing UserData in local storage by user id, for later retrieval*/
+        localStorage.setItem(res.data.id, JSON.stringify(res.data));
         setFetchResults((prev) => {
           return {
             ...prev,
