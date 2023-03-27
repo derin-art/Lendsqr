@@ -1,6 +1,7 @@
 import Style from "./Login.module.scss";
 import EnterLoginDetailsComponent from "./EnterLoginDetailsComponent";
 
+
 export default function Login() {
   const logoSvgLocation = "/Icons/Logo.svg";
   return (

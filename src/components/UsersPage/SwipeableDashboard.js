@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import UserPageHeadlineItem from "./UserPageHeadlineItem";
 import Style from "./UsersPage.module.scss";
@@ -5,6 +6,8 @@ import Style from "./UsersPage.module.scss";
 export default function SwipeableDashboard() {
   const dashBoardHeadlineSvgRootLocation =
     "/Icons/Dashboard/DashboardHeadline/";
+
+  const [swipeableIndex, setSwipeableIndex] = useState(0);
 
   const dashboardHeadlineItemsList = [
     {
@@ -30,9 +33,16 @@ export default function SwipeableDashboard() {
   ];
 
   return (
-    <div>
+    <div className={Style.SwipeableDashboardHeadlineMainCont}>
       <div>
-        <SwipeableViews className={Style.SwipeableDashboardHeadline}>
+        <SwipeableViews
+          onChangeIndex={(index) => {
+            setSwipeableIndex(index);
+          }}
+          enableMouseEvents
+          index={swipeableIndex}
+          className={Style.SwipeableDashboardHeadline}
+        >
           {dashboardHeadlineItemsList.map((item, index) => {
             return (
               <div key={index} className={Style.SwipeableDashboardHeadlineCont}>
@@ -47,6 +57,21 @@ export default function SwipeableDashboard() {
             );
           })}
         </SwipeableViews>
+      </div>
+      <div className={Style.DashboardHeadlineButtons}>
+        {dashboardHeadlineItemsList.map((item, index) => {
+          return (
+            <button
+              onClick={() => {
+                setSwipeableIndex(index);
+              }}
+              className={`${swipeableIndex === index && Style.IsInView} `}
+              key={index}
+            >
+              {item.name}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

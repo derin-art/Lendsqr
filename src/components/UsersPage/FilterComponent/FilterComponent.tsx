@@ -55,9 +55,6 @@ export default function FilterComponent(props: FilterComponentProps) {
   };
 
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
     function handleClickOutside(event: any) {
       if (ref.current && !ref.current.contains(event.target)) {
         props.setISFilterCompRendered(false);
@@ -78,7 +75,7 @@ export default function FilterComponent(props: FilterComponentProps) {
           {filterInputs.map((item, index) => {
             if (item.optionsInput) {
               return (
-                <div>
+                <div key={index}>
                   <label>{item.name}</label>
                   <select
                     value={item.value}
@@ -102,7 +99,7 @@ export default function FilterComponent(props: FilterComponentProps) {
             }
 
             return (
-              <div>
+              <div key={index}>
                 <label>{item.name}</label>
                 <input
                   onChange={(e) => {

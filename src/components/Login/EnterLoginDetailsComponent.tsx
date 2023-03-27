@@ -1,8 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Style from "./Login.module.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import {
   ifErrorUpdate,
@@ -12,6 +13,18 @@ import {
 } from "../../hooks/useToastifyPopUp";
 
 export default function EnterLoginDetailsComponent() {
+  const toastId2 = "custom";
+
+  useEffect(() => {
+    console.log("heyy");
+    toast.info(
+      "Hi User. Type any Text into the Email and Password fields and click the Login button, to access the Users Page. Click to close ",
+      {
+        autoClose: false,
+        toastId: toastId2,
+      }
+    );
+  }, []);
   const navigate = useNavigate();
   const toastId = useRef();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);

@@ -139,6 +139,14 @@ export default function UserPageTable() {
 
   return (
     <div className={Style.UsersPageTable}>
+      <button
+        onClick={() => {
+          setISFilterCompRendered((prev) => !prev);
+        }}
+        className={Style.OpenFilter}
+      >
+        {isFilterCompRendered ? "Close" : "Open"} Filter
+      </button>
       <FilterComponent
         setISFilterCompRendered={setISFilterCompRendered}
         isFilterCompRendered={isFilterCompRendered}

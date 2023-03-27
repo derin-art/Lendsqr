@@ -70,6 +70,28 @@
   background-color: #e5e5e5;
 }
 
+.SwipeableDashboardHeadlineMainCont {
+  @media screen and (min-width: variables.$tab) {
+    display: none;
+  }
+  background: white;
+  padding: 40px 0px;
+  margin-bottom: 40px;
+  .DashboardHeadlineButtons {
+    display: flex;
+    font-size: 10px;
+    font-family: WorkSans, sans-serif;
+    justify-content: space-around;
+    align-items: center;
+    button {
+      padding-bottom: 2px;
+      &.IsInView {
+        border-bottom: 3px variables.$btn-color solid;
+      }
+    }
+  }
+}
+
 .SwipeableDashboardHeadline {
   display: flex;
 
@@ -81,8 +103,9 @@
 }
 .SwipeableDashboardHeadlineCont {
   width: 100vw;
-
+  border: 1px rgba(variables.$header-text, 0.2) solid;
   display: flex;
+
   justify-content: center;
 }
 
@@ -105,7 +128,19 @@
   background-color: white;
   padding: 30px;
   box-sizing: border-box;
-
+  .OpenFilter {
+    font-family: WorkSans, sans-serif;
+    font-size: 13px;
+    background: variables.$btn-color;
+    color: white;
+    width: fit-content;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    @media screen and (min-width: variables.$tab) {
+      display: none;
+    }
+  }
   .UsersPageTableHeader {
     display: none;
     @media screen and (min-width: variables.$laptop) {
