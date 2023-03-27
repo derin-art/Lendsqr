@@ -14,9 +14,9 @@ export type DashboardTableItemProps = {
   id: string;
 };
 
-export default function DashboardTableItem(props: DashboardTableItemProps) {
-  const tableHeaderIcon =
-    "/Icons/Dashboard/DashboardTableItem/TableHeaderIcon.svg";
+export default function UserPageTableItem(props: DashboardTableItemProps) {
+  const userPageTableItemIconsRootLocation =
+    "/Icons/UsersPage/UserPageTableItem";
   let statusClassName;
   if (props.Status === "Active") {
     statusClassName = Style.Active;
@@ -37,7 +37,11 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
       <div className={Style.UsersPageTableItem}>
         <span className={Style.HorizontalHeader}>
           <p>
-            ORGANIZATION <img alt="Header Icon" src={tableHeaderIcon}></img>
+            ORGANIZATION{" "}
+            <img
+              alt="Header Icon"
+              src={`${userPageTableItemIconsRootLocation}/TableHeaderIcon.svg`}
+            ></img>
           </p>
           {props.Organization}
         </span>
@@ -70,7 +74,7 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
           <img
             alt="PopUp Menu Button"
             className={Style.PopUpButtonIcon}
-            src="/Icons/Dashboard/DashboardTableItem/PopUpMenuIcon.svg"
+            src={`${userPageTableItemIconsRootLocation}/PopUpMenuIcon.svg`}
           ></img>
         </button>
       </div>

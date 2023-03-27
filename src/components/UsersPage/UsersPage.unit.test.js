@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import DashboardTableItem from "./UsersPageTableItem";
+import UserPageTableItem from "./UsersPageTableItem";
 
 const MockData = [
   {
@@ -13,13 +13,13 @@ const MockData = [
   },
 ];
 
-describe("Tests for DashboardTableItem", () => {
-  test("Check if the DashboardTableItem component renders correctly", () => {
+describe("Tests for UserPageTableItem", () => {
+  test("Check if the UserPageTableItem component renders correctly", () => {
     render(
       <div>
         {MockData.map((item, index) => {
           return (
-            <DashboardTableItem
+            <UserPageTableItem
               DateJoined={item.DateJoined}
               Email={item.Email}
               Organization={item.Organization}
@@ -27,7 +27,7 @@ describe("Tests for DashboardTableItem", () => {
               Status={item.Status}
               Username={item.UserName}
               key={index}
-            ></DashboardTableItem>
+            ></UserPageTableItem>
           );
         })}
       </div>
