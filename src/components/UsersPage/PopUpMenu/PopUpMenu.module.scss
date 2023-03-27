@@ -1,3 +1,5 @@
+@use "../../variables";
+
 .PopUpMenu {
   position: absolute;
 
@@ -14,14 +16,23 @@
   background-color: white;
   filter: drop-shadow(3px, 5px rgba(0, 0, 0, 0.04));
   box-sizing: border-box;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
 
   align-content: flex-start;
   z-index: 60;
   filter: drop-shadow(3px, 5px rgba(0, 0, 0, 0.04));
+  a {
+    all: unset;
+  }
   button {
     font-family: WorkSans, sans-serif;
     font-weight: 500;
     display: flex;
+    transition-duration: 100;
+    color: variables.$header-text;
+    &:hover {
+      opacity: 0.7;
+    }
 
     margin-bottom: 20px;
     position: relative;

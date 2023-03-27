@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Style from "./Dashboard.module.scss";
 import SideBarOptionsItem from "./SideBarOptionsItem";
+import { useLocation } from "react-router-dom";
 
 type SideBarProps = {
   /* Boolean that controls if the sidebar is open or closed */
@@ -8,6 +9,9 @@ type SideBarProps = {
 };
 
 export default function SideBar(props: SideBarProps) {
+  const { pathname } = useLocation();
+  const isOnUserDetailsPage = pathname.includes("/UserDetails");
+
   const [selectedSideBarItem, setSelecetdSideBarItem] = useState("Users");
   /* For easier importing of SideBar svg assets */
 
@@ -99,6 +103,13 @@ export default function SideBar(props: SideBarProps) {
     },
   ];
 
+  const userDetailsSettingsMenuSection = [
+    {
+      iconPath: `${sideBarSvgRootLocation}/SystemMessages.svg`,
+      name: "System Messages",
+    },
+  ];
+
   return (
     <div
       className={`${Style.SideBar} ${
@@ -157,6 +168,18 @@ export default function SideBar(props: SideBarProps) {
             ></SideBarOptionsItem>
           );
         })}
+        {isOnUserDetailsPage &&
+          userDetailsSettingsMenuSection.map((item, index) => {
+            return (
+              <SideBarOptionsItem
+                icon={item.iconPath}
+                name={item.name}
+                setSelectedSideBarItem={setSelecetdSideBarItem}
+                selectedsideBarItem={selectedSideBarItem}
+                key={index}
+              ></SideBarOptionsItem>
+            );
+          })}
       </div>
     </div>
   );

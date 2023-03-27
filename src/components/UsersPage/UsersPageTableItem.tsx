@@ -75,6 +75,7 @@ export default function DashboardTableItem(props: DashboardTableItemProps) {
       </div>
       {props.indexOfPopUpMenuOpen === props.id && (
         <PopUpMenu
+          id={props.id}
           setIndexOfPopUpMenuOpen={props.setIndexOfPopUpMenuOpen}
         ></PopUpMenu>
       )}

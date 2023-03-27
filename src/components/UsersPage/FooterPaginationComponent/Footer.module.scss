@@ -22,6 +22,23 @@
     }
   }
 
+  .FooterSelector {
+    font-size: 14px;
+    font-family: WorkSans, sans-serif;
+    select {
+      all: unset;
+      padding: 7px 12px;
+      box-sizing: border-box;
+      font-weight: 500;
+      ::placeholder {
+        font-weight: 500;
+      }
+      border-radius: 4px;
+      background-color: rgba(variables.$header-text, 0.1);
+      color: variables.$header-text;
+    }
+  }
+
   .FooterButtons {
     display: flex;
     justify-content: space-between;

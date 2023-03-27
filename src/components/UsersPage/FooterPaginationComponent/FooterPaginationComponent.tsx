@@ -39,9 +39,9 @@ export default function FooterPaginationComponent(
 
   return (
     <div className={Style.FooterCont}>
-      <div>
+      <div className={Style.FooterSelector}>
         Showing{" "}
-        <select placeholder="Select">
+        <select placeholder="Select ">
           {numberPerPageOptions.map((option, index) => {
             return (
               <option value={option} key={index}>
@@ -49,17 +49,17 @@ export default function FooterPaginationComponent(
               </option>
             );
           })}{" "}
-          out of 100
-        </select>
+        </select>{" "}
+        out of 100
       </div>
       <div className={Style.FooterButtons}>
         <button
+          className={`${Style.NextPage} ${
+            props.currentPage === 0 && Style.cannotBeClicked
+          }`}
           onClick={() => {
-            handleNextPage();
+            handlePrevPage();
           }}
-          className={`${
-            props.currentPage === pageNumbers - 1 && Style.cannotBeClicked
-          } ${Style.NextPage}`}
         >
           <img src="\Icons\UsersPage\FooterPaginationComponent\Prev.svg"></img>
         </button>
@@ -98,10 +98,12 @@ export default function FooterPaginationComponent(
           })}
         </div>
         <button
-          className={`${props.currentPage === 0 && Style.cannotBeClicked}`}
           onClick={() => {
-            handlePrevPage();
+            handleNextPage();
           }}
+          className={`${
+            props.currentPage === pageNumbers - 1 && Style.cannotBeClicked
+          } `}
         >
           <img src="\Icons\UsersPage\FooterPaginationComponent\Prev.svg"></img>
         </button>
