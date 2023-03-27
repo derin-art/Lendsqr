@@ -4,29 +4,28 @@ import UserPageHeadlineItem from "./UserPageHeadlineItem";
 import Style from "./UsersPage.module.scss";
 
 export default function SwipeableDashboard() {
-  const dashBoardHeadlineSvgRootLocation =
-    "/Icons/UsersPage/DashboardHeadline/";
+  const userPageHeadlineSvgRootLocation = "/Icons/UsersPage/UserPageHeadline/";
 
   const [swipeableIndex, setSwipeableIndex] = useState(0);
 
   const dashboardHeadlineItemsList = [
     {
-      iconPath: `${dashBoardHeadlineSvgRootLocation}/ActiveUsers.svg`,
+      iconPath: `${userPageHeadlineSvgRootLocation}/ActiveUsers.svg`,
       name: "Active Users",
       amount: 2453,
     },
     {
-      iconPath: `${dashBoardHeadlineSvgRootLocation}/Users.svg`,
+      iconPath: `${userPageHeadlineSvgRootLocation}/Users.svg`,
       name: "Users",
       amount: 2453,
     },
     {
-      iconPath: `${dashBoardHeadlineSvgRootLocation}/UsersWithLoans.svg`,
+      iconPath: `${userPageHeadlineSvgRootLocation}/UsersWithLoans.svg`,
       name: "Users With Loans",
       amount: 12453,
     },
     {
-      iconPath: `${dashBoardHeadlineSvgRootLocation}/UsersWithSavings.svg`,
+      iconPath: `${userPageHeadlineSvgRootLocation}/UsersWithSavings.svg`,
       name: "Users With Savings",
       amount: 102453,
     },
