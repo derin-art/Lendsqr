@@ -58,7 +58,7 @@ function FilterFunction(
 
     return true;
   });
-  console.log("filtered", filteredArray);
+
   return filteredArray;
 }
 
