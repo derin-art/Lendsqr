@@ -104,7 +104,8 @@
 }
 .SwipeableUserPageHeadlineCont {
   width: 100vw;
-  border: 1px rgba(variables.$header-text, 0.2) solid;
+  border-top: 1px rgba(variables.$header-text, 0.2) solid;
+  border-bottom: 1px rgba(variables.$header-text, 0.2) solid;
   display: flex;
 
   justify-content: center;

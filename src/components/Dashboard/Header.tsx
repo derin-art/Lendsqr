@@ -31,16 +31,16 @@ export default function Header(props: HeaderProps) {
             {" "}
             <span className={Style.Docs}>Docs</span>
             <img
-              alt="Notification Icon"
-              className={Style.BellIcon}
-              src={bellIconLocation}
-            ></img>
-            <img
               src={profilePicLocation}
               alt="Profile Pic"
               className={Style.ProfilePic}
             ></img>
             <span>Adedeji</span>
+            <img
+              alt="Notification Icon"
+              className={Style.BellIcon}
+              src={bellIconLocation}
+            ></img>
           </span>
         </div>
 
