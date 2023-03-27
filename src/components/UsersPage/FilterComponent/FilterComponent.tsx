@@ -5,6 +5,7 @@ import { DashboardTableItemProps } from "../UsersPageTableItem";
 import { DashboardTableItemType } from "../Types/DashboardTableItemType";
 import { format } from "date-fns";
 import React from "react";
+import { useEffect, useRef } from "react";
 import { fetchResultType } from "../UsersPageTable";
 import { TurnsAFlatArrayIntoNestedArrays } from "../Functions/TurnsAFlatArrayIntoNestedArrays";
 
@@ -14,9 +15,11 @@ type FilterComponentProps = {
   userDataFlatArray: DashboardTableItemType[];
   setFetchResults: React.Dispatch<React.SetStateAction<fetchResultType>>;
   isFilterCompRendered: boolean;
+  setISFilterCompRendered: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function FilterComponent(props: FilterComponentProps) {
+  const ref: any = useRef();
   const variants = {
     out: {},
     in: {},
@@ -51,107 +54,112 @@ export default function FilterComponent(props: FilterComponentProps) {
     });
   };
 
-  const date = new Date("2020-09-08T15:19:37.972Z");
-
-  console.log("date", format(date, "PPp"));
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event: any) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        props.setISFilterCompRendered(false);
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
 
   return (
-    <AnimatePresence>
-      <motion.div
-        variants={variants}
-        key={String(props.isFilterCompRendered)}
-        animate="in"
-        initial="out"
-        exit={"out"}
-      >
-        {props.isFilterCompRendered && (
-          <div className={`${Style.MainComp} `}>
-            {filterInputs.map((item, index) => {
-              if (item.optionsInput) {
-                return (
-                  <div>
-                    <label>{item.name}</label>
-                    <select
-                      value={item.value}
-                      placeholder={item.name}
-                      onChange={(e) => {
-                        handleFilterSelection(item.name, e.target.value);
-                      }}
-                      key={index}
-                    >
-                      <option label="Select" disabled selected></option>
-                      {item.options.map((option, index) => {
-                        return (
-                          <option value={option} key={index}>
-                            {option}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-                );
-              }
-
+    <div ref={ref}>
+      {props.isFilterCompRendered && (
+        <div className={`${Style.MainComp} `}>
+          {filterInputs.map((item, index) => {
+            if (item.optionsInput) {
               return (
                 <div>
                   <label>{item.name}</label>
-                  <input
+                  <select
+                    value={item.value}
+                    placeholder={item.name}
                     onChange={(e) => {
                       handleFilterSelection(item.name, e.target.value);
                     }}
                     key={index}
-                    type={item.dateInput ? "date" : "text"}
-                    placeholder={item.name}
-                  ></input>
+                  >
+                    <option label="Select" disabled selected></option>
+                    {item.options.map((option, index) => {
+                      return (
+                        <option value={option} key={index}>
+                          {option}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </div>
               );
-            })}
-            <div className={Style.FilterBtnCont}>
-              <button
-                onClick={() => {
-                  const initialArray = TurnsAFlatArrayIntoNestedArrays(
-                    10,
-                    props.userDataFlatArray
-                  );
-                  props.setFetchResults((prev) => {
-                    return {
-                      ...prev,
-                      userDataArray: initialArray,
-                    };
-                  });
-                }}
-              >
-                Reset
-              </button>
-              <button
-                onClick={() => {
-                  const newFilteredArray = FilterFunction(
-                    props.filters.Username,
-                    props.filters.Organization,
-                    props.filters.Email,
-                    props.filters.DateJoined,
-                    props.filters.PhoneNumber,
-                    props.filters.Status,
-                    props.userDataFlatArray
-                  );
-                  const nestedFilteredArray = TurnsAFlatArrayIntoNestedArrays(
-                    10,
-                    newFilteredArray
-                  );
-                  props.setFetchResults((prev) => {
-                    return {
-                      ...prev,
-                      userDataArray: nestedFilteredArray,
-                    };
-                  });
-                }}
-              >
-                Filter
-              </button>
-            </div>
+            }
+
+            return (
+              <div>
+                <label>{item.name}</label>
+                <input
+                  onChange={(e) => {
+                    handleFilterSelection(item.name, e.target.value);
+                  }}
+                  key={index}
+                  type={item.dateInput ? "date" : "text"}
+                  placeholder={item.name}
+                ></input>
+              </div>
+            );
+          })}
+          <div className={Style.FilterBtnCont}>
+            <button
+              onClick={() => {
+                const initialArray = TurnsAFlatArrayIntoNestedArrays(
+                  10,
+                  props.userDataFlatArray
+                );
+                props.setFetchResults((prev) => {
+                  return {
+                    ...prev,
+                    userDataArray: initialArray,
+                  };
+                });
+              }}
+            >
+              Reset
+            </button>
+            <button
+              onClick={() => {
+                const newFilteredArray = FilterFunction(
+                  props.filters.Username,
+                  props.filters.Organization,
+                  props.filters.Email,
+                  props.filters.DateJoined,
+                  props.filters.PhoneNumber,
+                  props.filters.Status,
+                  props.userDataFlatArray
+                );
+                const nestedFilteredArray = TurnsAFlatArrayIntoNestedArrays(
+                  10,
+                  newFilteredArray
+                );
+                props.setFetchResults((prev) => {
+                  return {
+                    ...prev,
+                    userDataArray: nestedFilteredArray,
+                  };
+                });
+              }}
+            >
+              Filter
+            </button>
           </div>
-        )}
-      </motion.div>
-    </AnimatePresence>
+        </div>
+      )}
+    </div>
   );
 }

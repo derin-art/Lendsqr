@@ -140,6 +140,7 @@ export default function UserPageTable() {
   return (
     <div className={Style.UsersPageTable}>
       <FilterComponent
+        setISFilterCompRendered={setISFilterCompRendered}
         isFilterCompRendered={isFilterCompRendered}
         setFetchResults={setFetchResults}
         userDataFlatArray={fetchResults.userDataFlatArray}
