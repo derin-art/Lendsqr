@@ -5,7 +5,7 @@ import Style from "./UsersPage.module.scss";
 
 export default function SwipeableDashboard() {
   const dashBoardHeadlineSvgRootLocation =
-    "/Icons/Dashboard/DashboardHeadline/";
+    "/Icons/UsersPage/DashboardHeadline/";
 
   const [swipeableIndex, setSwipeableIndex] = useState(0);
 
