@@ -45,6 +45,7 @@
     box-sizing: border-box;
     border-radius: 4px;
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+
     @media screen and (min-width: variables.$tab) {
       margin-right: 2px;
     }
@@ -152,10 +153,14 @@
       display: flex;
       p {
         width: 100px;
-        font-size: 12px;
+        font-size: 10px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         font-family: WorkSans, sans-serif;
+        @media screen and (min-width: variables.$lg-laptop) {
+          font-size: 12px;
+        }
         font-weight: 600;
         color: variables.$input-border-col;
         cursor: pointer;
