@@ -57,6 +57,8 @@ export default function FilterComponent(props: FilterComponentProps) {
   useEffect(() => {
     function handleClickOutside(event: any) {
       if (ref.current && !ref.current.contains(event.target)) {
+        /* To be make the function only work for Tablet viewports and above */
+        if (window.innerWidth < 640) return;
         props.setISFilterCompRendered(false);
       }
     }
@@ -69,9 +71,9 @@ export default function FilterComponent(props: FilterComponentProps) {
   }, [ref]);
 
   return (
-    <div ref={ref}>
+    <div>
       {props.isFilterCompRendered && (
-        <div className={`${Style.MainComp} `}>
+        <div ref={ref} className={`${Style.MainComp} `}>
           {filterInputs.map((item, index) => {
             if (item.optionsInput) {
               return (
@@ -85,7 +87,11 @@ export default function FilterComponent(props: FilterComponentProps) {
                     }}
                     key={index}
                   >
-                    <option label="Select" disabled selected></option>
+                    <option
+                      label="Select"
+                      disabled
+                      defaultValue={"Select"}
+                    ></option>
                     {item.options.map((option, index) => {
                       return (
                         <option value={option} key={index}>

@@ -134,7 +134,9 @@
     background: variables.$btn-color;
     color: white;
     width: fit-content;
+    position: relative;
     padding: 10px;
+    height: fit-content;
     margin-bottom: 10px;
     border-radius: 4px;
     @media screen and (min-width: variables.$tab) {

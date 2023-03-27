@@ -1,7 +1,7 @@
 import Style from "./UsersPage.module.scss";
 import axios from "axios";
 import DashboardTableItem from "./UsersPageTableItem";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TurnsAFlatArrayIntoNestedArrays } from "./Functions/TurnsAFlatArrayIntoNestedArrays";
 import FilterComponent from "./FilterComponent/FilterComponent";
 import { DashboardTableItemType } from "./Types/DashboardTableItemType";
@@ -20,6 +20,7 @@ export type fetchResultType = {
 };
 
 export default function UserPageTable() {
+  const ref: any = useRef();
   const variants = {
     out: {
       opacity: 0,
@@ -140,6 +141,7 @@ export default function UserPageTable() {
   return (
     <div className={Style.UsersPageTable}>
       <button
+        ref={ref}
         onClick={() => {
           setISFilterCompRendered((prev) => !prev);
         }}
@@ -147,14 +149,18 @@ export default function UserPageTable() {
       >
         {isFilterCompRendered ? "Close" : "Open"} Filter
       </button>
-      <FilterComponent
-        setISFilterCompRendered={setISFilterCompRendered}
-        isFilterCompRendered={isFilterCompRendered}
-        setFetchResults={setFetchResults}
-        userDataFlatArray={fetchResults.userDataFlatArray}
-        filters={filters}
-        setFilter={setFilters}
-      ></FilterComponent>
+      {isFilterCompRendered ? (
+        <FilterComponent
+          setISFilterCompRendered={setISFilterCompRendered}
+          isFilterCompRendered={isFilterCompRendered}
+          setFetchResults={setFetchResults}
+          userDataFlatArray={fetchResults.userDataFlatArray}
+          filters={filters}
+          setFilter={setFilters}
+        ></FilterComponent>
+      ) : (
+        ""
+      )}
       <div className={Style.UsersPageTableHeader}>
         {tableHeaderHeadings.map((item, index) => {
           return (
