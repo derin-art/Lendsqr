@@ -1,5 +1,5 @@
 import SwipeableViews from "react-swipeable-views";
-import DashboardHeadlineItem from "./DashboardHeadlineItem";
+import UserPageHeadlineItem from "./UserPageHeadlineItem";
 import Style from "./UsersPage.module.scss";
 
 export default function SwipeableDashboard() {
@@ -37,12 +37,12 @@ export default function SwipeableDashboard() {
             return (
               <div key={index} className={Style.SwipeableDashboardHeadlineCont}>
                 {" "}
-                <DashboardHeadlineItem
+                <UserPageHeadlineItem
                   amount={item.amount}
                   icon={item.iconPath}
                   name={item.name}
                   key={index}
-                ></DashboardHeadlineItem>
+                ></UserPageHeadlineItem>
               </div>
             );
           })}

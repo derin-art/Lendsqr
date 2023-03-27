@@ -6,7 +6,7 @@ type DashboardHeadlineItemProps = {
   amount: number;
 };
 
-export default function DashboardHeadlineItem(
+export default function UserPageHeadlineItem(
   props: DashboardHeadlineItemProps
 ) {
   return (

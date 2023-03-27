@@ -1,6 +1,8 @@
+import { useState } from "react";
 import Style from "./Login.module.scss";
 
 export default function EnterLoginDetailsComponent() {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   return (
     <div className={`${Style.LoginDetailComp}`}>
       <div className={`${Style.headingCont}`}>
@@ -11,8 +13,18 @@ export default function EnterLoginDetailsComponent() {
         <input placeholder="Email"></input>
       </div>
       <div className={`w-full ${Style.inputCont}`}>
-        <input placeholder="Password"></input>
-        <button className={Style.ShowInput}>SHOW</button>
+        <input
+          type={isPasswordVisible ? "text" : "password"}
+          placeholder="Password"
+        ></input>
+        <button
+          onClick={() => {
+            setIsPasswordVisible((prev) => !prev);
+          }}
+          className={Style.ShowInput}
+        >
+          SHOW
+        </button>
       </div>
       <div className={Style.ForgotBtn}>
         <button>FORGOT PASSWORD?</button>

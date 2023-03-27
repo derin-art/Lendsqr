@@ -9,6 +9,15 @@
   overflow: hidden;
 }
 
+.Logo {
+  position: absolute;
+  top: 5%;
+  @media screen and (min-width: variables.$tab) {
+    left: 7%;
+    top: 7.4%;
+  }
+}
+
 .LoginDetailComp {
   width: 100vw;
   height: 100vh;

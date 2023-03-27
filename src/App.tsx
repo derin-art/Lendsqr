@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.scss";
-import LendsqrIcon from "./Icons/LendsqrIcon";
+
 import Dashboard from "./components/Dashboard/Dashboard";
 import Login from "./components/Login/Login";
 import Users from "./components/UsersPage/UsersPage";

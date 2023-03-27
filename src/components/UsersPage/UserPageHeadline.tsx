@@ -1,8 +1,8 @@
 import Style from "./UsersPage.module.scss";
-import DashboardHeadlineItem from "./DashboardHeadlineItem";
+import UserPageHeadlineItem from "./UserPageHeadlineItem";
 import SwipeableDashboard from "./SwipeableDashboard";
 
-export default function DashboardHeadline() {
+export default function UserPageHeadline() {
   const dashBoardHeadlineSvgRootLocation =
     "/Icons/Dashboard/DashboardHeadline/";
 
@@ -34,12 +34,12 @@ export default function DashboardHeadline() {
       <div className={Style.UserPageHeadline}>
         {dashboardHeadlineItemsList.map((item, index) => {
           return (
-            <DashboardHeadlineItem
+            <UserPageHeadlineItem
               amount={item.amount}
               icon={item.iconPath}
               name={item.name}
               key={index}
-            ></DashboardHeadlineItem>
+            ></UserPageHeadlineItem>
           );
         })}
       </div>
